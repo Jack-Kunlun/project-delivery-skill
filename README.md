@@ -123,9 +123,19 @@ The skill reads only the references relevant to the task. It keeps **implemented
 
 ## Language and compatibility
 
-The main README is English; [README.zh-CN.md](README.zh-CN.md) provides the Chinese version. The skill instructions, references, and Codex display metadata are **written in English**. The Chinese README explains installation and usage; it does not duplicate the instruction package.
+The main README is English; [README.zh-CN.md](README.zh-CN.md) provides the Chinese version. The skill instructions, references, and Codex display metadata are **written in English**. The [Chinese reader documentation](docs/zh-CN/guide.md) provides corresponding explanations and reference pages outside the installable skill folder. Its links stay within the Chinese documentation except explicitly labeled language switches; it does not register a second skill.
 
 The package contains Markdown instructions and optional Codex UI metadata. It has no application runtime, package-manager dependencies, background services, or bundled executable automation. Actual tool availability and skill discovery depend on the host agent.
+
+## Documentation
+
+- [Skill instructions](skills/project-delivery/SKILL.md)
+- [Project adoption and persistent initialization](skills/project-delivery/references/adopt-project.md)
+- [Legacy-project takeover](skills/project-delivery/references/legacy-project.md)
+- [Record templates](skills/project-delivery/references/record-templates.md)
+- [Delivery, UI/UX, and testing gates](skills/project-delivery/references/delivery-gates.md)
+- [Continuous improvement](skills/project-delivery/references/improvement.md)
+- [Project record](docs/PROJECT.md)
 
 ## Repository layout
 
@@ -140,7 +150,12 @@ skills/project-delivery/
     delivery-gates.md            Lifecycle, UI/UX, tests, and acceptance
     improvement.md               Recurrence and improvement follow-up
 
-docs/PROJECT.md                  This repository's maintenance record
+docs/PROJECT.md                  Authoritative maintenance record
+docs/zh-CN/                     Chinese reader documentation
+  guide.md                       Chinese skill guide
+  references/                    Chinese reference pages
+  PROJECT.md                     Synchronized Chinese record view
+  LICENSE.md                     Chinese license explanation
 ```
 
 ## Validation and limits
@@ -155,7 +170,7 @@ Installing this skill does not create CI gates, continuous monitoring, or an imm
 
 Open an issue with a concrete scenario, expected behavior, observed result, and relevant evidence. Do not include credentials, private project material, or production data.
 
-Keep changes focused. Update both READMEs when public usage changes, keep the skill entry point concise, and verify that its referenced files remain usable. Behavioral changes should be checked against realistic, isolated scenarios rather than assertions that merely match instruction wording.
+Keep changes focused. Update both READMEs when public usage changes and keep the corresponding Chinese reader documents aligned with their English sources. Preserve same-language navigation, keep the skill entry point concise, and verify that its referenced files remain usable. Behavioral changes should be checked against realistic, isolated scenarios rather than assertions that merely match instruction wording.
 
 ## License
 

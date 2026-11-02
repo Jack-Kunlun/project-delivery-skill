@@ -2,7 +2,7 @@
 
 一个可复用的 Agent skill，用于追踪需求、设计、开发、测试、验收、上线和持续改进。
 
-[English](README.md) · [Skill 指令](skills/project-delivery/SKILL.md) · [MIT 许可证](LICENSE)
+[English](README.md) · [Skill 指令说明](docs/zh-CN/guide.md) · [MIT 许可证](docs/zh-CN/LICENSE.md)
 
 Project Delivery 帮助编码 Agent 维护项目的真实工作和证据：已有记录就沿用，缺少记录就从小处建立，老旧系统则渐进接管。
 
@@ -121,9 +121,19 @@ Skill 会创建或更新**实际生效的项目级 Agent 指令**（通常是 `A
 
 ## 语言与兼容性
 
-主 README 使用英文，本文件提供中文说明。Skill 指令、参考资料和 Codex 显示元数据统一使用**英文**；本文件提供中文安装与使用说明，不另维护一份中文指令包。
+主 README 使用英文，本文件提供中文说明。Skill 指令、参考资料和 Codex 显示元数据统一使用**英文**；[中文指令说明](docs/zh-CN/guide.md)及其配套参考资料提供对应的中文阅读版本，普通文档链接保持在中文文档内；需要切换语言时使用明确标注的英文原文入口。中文说明位于安装目录之外，不注册第二个 skill。
 
 安装包包含 Markdown 指令和可选的 Codex UI 元数据，没有应用运行时、包管理依赖、后台服务或可执行自动化。实际工具与发现机制取决于使用它的 Agent 环境。
+
+## 文档导航
+
+- [Skill 指令说明](docs/zh-CN/guide.md)
+- [项目接入与持续初始化](docs/zh-CN/references/adopt-project.md)
+- [老旧项目接管](docs/zh-CN/references/legacy-project.md)
+- [记录模板](docs/zh-CN/references/record-templates.md)
+- [交付、UI/UX 与测试验收](docs/zh-CN/references/delivery-gates.md)
+- [持续改进](docs/zh-CN/references/improvement.md)
+- [项目记录](docs/zh-CN/PROJECT.md)
 
 ## 目录结构
 
@@ -138,14 +148,19 @@ skills/project-delivery/
     delivery-gates.md            生命周期、UI/UX、测试与验收
     improvement.md               复发问题与改进效果复验
 
-docs/PROJECT.md                  本仓库的维护记录
+docs/PROJECT.md                  权威维护记录（英文）
+docs/zh-CN/                     中文阅读文档
+  guide.md                       Skill 指令中文说明
+  references/                    对应中文参考资料
+  PROJECT.md                     同步的项目记录中文视图
+  LICENSE.md                     MIT 许可证中文说明
 ```
 
 ## 验证与限制
 
 翻译前的中文指令包在两个隔离样例中演练过：一个有既有台账，一个是无台账且暂不可运行的旧项目。首轮发现的接入工作漏入账、复发问题改进接续不足，已补强并复查。这是有限样例验证，不代表所有项目中的效果都已证明。英文包进行了语义、结构和安装检查，未重新执行英文行为演练。
 
-发布检查覆盖文件一致性、skill 元数据、内部链接、文档中的手动安装步骤及已有安装保护。本次初始化/接续改动的专项行为证据与原演练分开记录。实际结果和发布状态见 [项目记录](docs/PROJECT.md)。
+发布检查覆盖文件一致性、skill 元数据、内部链接、文档中的手动安装步骤及已有安装保护。本次初始化/接续改动的专项行为证据与原演练分开记录。实际结果和发布状态见 [项目记录](docs/zh-CN/PROJECT.md)。
 
 安装 skill 不会自动创建 CI 门禁、持续监控或不可篡改审计系统，也不会自动接入其他项目、修复缺陷，或授权提交、部署、生产访问和对外发送消息。项目约定与用户的实际授权仍然有效。
 
@@ -153,8 +168,8 @@ docs/PROJECT.md                  本仓库的维护记录
 
 提交 Issue 时说明具体场景、期望、实际结果及相关证据；不要上传凭据、私有项目资料或生产数据。
 
-保持修改聚焦。公共使用方式变化时同步中英文 README，保持入口精简，并检查参考文件仍可使用。行为变化应以真实的隔离场景验证，不仅检查指令中是否出现某些文字。
+保持修改聚焦。公共使用方式变化时同步中英文 README，英文来源变更时同步对应中文说明。保持同语言导航和精简入口，并检查参考文件仍可使用。行为变化应以真实的隔离场景验证，不仅检查指令中是否出现某些文字。
 
 ## 许可证
 
-[MIT](LICENSE) © 2026 Fenglan。
+[MIT](docs/zh-CN/LICENSE.md) © 2026 Fenglan。
