@@ -1,52 +1,52 @@
-# 项目接入与首次建账
+# Project Onboarding and Initial Recordkeeping
 
-## 有界盘点
+## Bounded inventory
 
-先看入口、目录、配置和当前任务，再对关键未知做定向读取。不要以“建台账”为由展开所有模块审计。至少回答：
+Start with the entry points, directories, configuration, and current task, then read selectively to resolve key unknowns. Do not use “setting up a ledger” as a reason to audit every module. At minimum, answer:
 
-- 哪个仓库/工作区是真正的实现，什么分支/提交或快照；哪些是原型、历史备份或生成物？
-- 项目解决什么问题、面向哪些用户，当前运行/交付方式是什么？
-- 有哪些实际能力与模块，哪些只有计划、原型或历史描述？
-- 需求、设计、接口、任务、缺陷、发布、经验各自的权威来源在哪里？
-- 当前目标与已承诺范围、已有完成内容、已知问题、依赖、维护限制是什么？
+- Which repository/workspace contains the actual implementation, and which branch, commit, or snapshot is it? Which items are prototypes, historical backups, or generated artifacts?
+- What problem does the project solve, who uses it, and how is it currently run or delivered?
+- What capabilities and modules actually exist, and which are only planned or described in prototypes or historical records?
+- Where are the authoritative sources for requirements, design, interfaces, tasks, defects, releases, and lessons?
+- What is the current goal and committed scope? What is already complete, and what known issues, dependencies, and maintenance limits exist?
 
-证据从当前代码/配置、现有文档与历史记录获取；可访问的连接工具能补充时使用它们。外部资料不可读就记录缺口，不能假装已同步。不要复制密钥、原始生产数据或带凭据的链接。
+Gather evidence from current code and configuration, existing documentation, and historical records. Use connected tools when they are available and can add evidence. If external sources cannot be read, record the gap; do not claim they are synchronized. Do not copy secrets, raw production data, or links containing credentials.
 
-## 沿用、补齐或首次建立
+## Reuse, fill gaps, or establish records for the first time
 
-**已有管理方式：** 建立位置映射，保留编号、状态和原有责任。不把外部 issue 状态复制成另一份手工台账；仓库入口链接到权威系统，必要快照写明日期与非权威性质。写入外部系统仍需本次授权。格式不统一不是重建台账的理由。
+**Existing project tracking:** Map where records live, preserving identifiers, statuses, and existing ownership. Do not copy external issue statuses into a second manual ledger; link the repository entry point to the authoritative system, and date any necessary snapshot while marking it as non-authoritative. Writing to an external system still requires authorization for this task. Inconsistent formatting is not a reason to rebuild the ledger.
 
-接入/补文档这项工作本身也要在权威台账中登记（可关联现有任务），并留开工、结果和证据；不得只登记后续产品需求。没有独立日志时，关键事件可追加到任务内。遗漏的历史事件标注补录，不倒填当时执行。
+Register the onboarding/documentation work itself in the authoritative ledger (it may be linked to an existing task), with a start record, outcome, and evidence; do not record only future product requirements. If there is no separate activity log, append key events to the task. Mark omitted historical events as backfilled; do not make it appear they were recorded at the time.
 
-**没有台账：** 先创建适合本项目的最小资料。默认可用 `docs/project/README.md` 作为入口，也可采用项目已有目录；小项目一份 `docs/PROJECT.md` 即可包含：
+**No project ledger:** First create the smallest set of records that suits the project. By default, `docs/project/README.md` can be the entry point, or use an existing project directory. For a small project, a single `docs/PROJECT.md` can contain:
 
-1. 项目概况、范围基线、主要能力与当前运行限制。
-2. 现有能力和历史交付：能力、源码/文档/运行证据、验证层级、已知缺陷。
-3. 工作与问题台账：当前任务、已知反馈、下一步；未知写待核实。
-4. 决定与关键事件、验收证据、下次接续点。
+1. Project overview, scope baseline, main capabilities, and current operating limits.
+2. Existing capabilities and historical deliveries: capability, source-code/documentation/runtime evidence, verification level, and known defects.
+3. Work and issue ledger: current tasks, known feedback, and next steps; mark unknowns for verification.
+4. Decisions and key events, acceptance evidence, and the next resumption point.
 
-先登记本次建账任务再继续盘点；首次没有历史记录时，只补录有据可查的事实。当前已存在代码不能推断当年已验收、已上线或曾按新流程执行。用户报告尚未复现也保留，归属不明时记录待核实，不能塞进错误项目修复。
+Record the current recordkeeping task before continuing the inventory. If there are no historical records yet, backfill only facts supported by evidence. Existing code does not prove that it was accepted, released, or managed under the new process at the time. Preserve user-reported issues that have not yet been reproduced; if ownership is unclear, mark it for verification rather than assigning a fix to the wrong project.
 
-随着实际记录增长再拆分。可选拆分为 `TASKS.md`、`CHANGES.md`、`ACTIVITY.md`、`ACCEPTANCE.md`、`MODULE-BOUNDARIES.md`、`LESSONS.md`、`EVIDENCE.md`；PRD、设计、测试及已交付能力沿用项目现有文件。不要无内容地创建这些空壳。字段可共处一文档，职责与追溯不能丢失。
+Split records further as they grow in practice. Optional files include `TASKS.md`, `CHANGES.md`, `ACTIVITY.md`, `ACCEPTANCE.md`, `MODULE-BOUNDARIES.md`, `LESSONS.md`, and `EVIDENCE.md`. Keep PRDs, design, tests, and delivered capabilities in the files the project already uses. Do not create empty shells. Fields may share a document, but their responsibilities and traceability must remain clear.
 
-## 接续入口与责任
+## Resumption entry point and ownership
 
-在项目既有 README/AGENTS 的合适位置增加简短入口，保留原规则。接入要求明确：开工读哪里、谁更新任务、谁验收、插单记哪里、发现问题如何落账、收工如何恢复；角色可由同一人承担，无真实人员信息时用待认领。组织岗位或六个 AI Agent 不是使用本流程的前提。
+Add a short entry point in an appropriate place in the project's existing README or AGENTS file, preserving its current rules. Onboarding should make clear what to read before work starts, who updates tasks, who accepts the work, where interruptions are recorded, how issues are logged, and how work is resumed at closeout. One person may hold multiple roles; use “unassigned” when no actual person is known. Organizational job titles or six AI agents are not prerequisites for using this process.
 
-仓库文档随分支版本化。新工作区应包含相关文档提交；未提交内容只能显式交接，不能假装已同步，也不能通过另一工作区的绝对路径维护可变状态。若使用外部权威系统，保持原系统权限与项目对应关系。
+Version repository documentation with its branch. A new workspace should include the relevant documentation commit; hand off uncommitted content explicitly rather than claiming it is synchronized, and do not maintain mutable state through absolute paths into another workspace. If an external system is authoritative, preserve its permissions and project mapping.
 
-## 进度口径
+## Progress reporting
 
-总览列产品范围、里程碑、目标/日期承诺、当前验收证据、阻塞、下一步及更新时间。没有承诺日期就写未承诺；不能根据任务数量估工期。
+The overview should list product scope, milestones, target/date commitments, current acceptance evidence, blockers, next steps, and the update date. If no date is committed, say so; do not estimate duration from the number of tasks.
 
-优先按里程碑报告“哪些成果已验收、哪些缺证据”。需要百分比时明确：
+Prefer milestone reporting that says which outcomes have been accepted and which lack evidence. If a percentage is needed, define:
 
-- 分母：已承诺基线内的交付单元及权重；排除未承诺想法、重复缺陷报告和单纯管理任务。
-- 分子：按约定完成定义验收的交付单元权重。
-- 来源与日期：关联任务、证据和基线；范围变化保留前后口径，不用变分母伪装进度提升。
+- **Denominator:** Delivery units and weights within the committed baseline. Exclude uncommitted ideas, duplicate defect reports, and administrative tasks alone.
+- **Numerator:** The weights of delivery units accepted as complete under the agreed definition of done.
+- **Source and date:** Link the tasks, evidence, and baseline. Preserve both the old and new measurement basis when scope changes; do not make progress look better by changing the denominator.
 
-不将任务数量、代码行数、测试通过数或文档数量直接称作产品完成率。
+Do not describe task counts, lines of code, passing test counts, or document counts directly as the product completion rate.
 
-## 接入验收
+## Onboarding acceptance
 
-入口可定位；权威来源唯一；本次工作与已知问题有去向；历史/现状/目标分开；总览摘要与台账相符；至少有下一项可执行工作和验收条件。用链接、编号/状态一致性、实际差异核对即可证明文档接入；这不证明产品功能或持续改进有效。暂不能运行的老项目继续按 [老旧项目接管](legacy-project.md) 记录限制。
+The entry point is findable; each record has one authoritative source; the current work and known issues have destinations; history, current state, and goals are separated; the overview agrees with the ledger; and at least one actionable next task and its acceptance conditions are recorded. Links, identifier/status consistency, and a check of actual differences can show that the documentation has been onboarded; they do not prove that product behavior or continuous improvement is effective. For a legacy project that cannot yet run, continue recording its limits according to [Gradual Takeover of Legacy Projects](legacy-project.md).

@@ -1,44 +1,44 @@
-# 问题边界与持续改进
+# Issue Boundaries and Continuous Improvement
 
-目标是让下一次相关工作能避开同类错误，而不只是多写一条经验。
+The goal is to help the next related task avoid the same kind of mistake, not merely to add another lesson.
 
-## 先记问题，再确定边界
+## Record the issue first, then establish its boundaries
 
-问题即使未复现也登记，标清报告事实与推断。分四层记录：
+Record an issue even if it has not been reproduced, and distinguish reported facts from inferences. Record four boundaries:
 
-1. **发生边界**：候选、入口、环境、角色、数据/状态和触发条件，哪些还未核实。
-2. **影响边界**：受影响功能、公共组件及消费者、历史版本、数据/外部副作用；已证实与可能影响分开。
-3. **责任边界**：规则/实现/状态归谁、谁牵头调查修复、上下游如何接收；不是简单把问题丢给最后显示错误的页面。
-4. **验证边界**：旧检查测了什么、缺了什么、证据对应哪个候选；本次在哪层证明修复、还有哪些限制。
+1. **Occurrence boundary:** Candidate, entry point, environment, role, data/state, and trigger conditions; identify what remains unverified.
+2. **Impact boundary:** Affected functionality, shared components and consumers, historical versions, and data/external side effects; distinguish confirmed from possible impact.
+3. **Ownership boundary:** Who owns the rule/implementation/state, who leads investigation and repair, and how upstream/downstream teams accept the change; do not simply assign the issue to the page where the error appears.
+4. **Verification boundary:** What the old checks did and did not test, which candidate the evidence covers, what layer proves the current fix, and what limits remain.
 
-问题有主责和去向，不能因跨模块而无人负责；关键责任未知先调查，不凭页面位置定根因。
+Every issue needs an owner and a destination; crossing module boundaries is not a reason to leave it unowned. Investigate unknown key ownership; do not infer root cause from the page where the issue appears.
 
-## 何时扩大调查或升级
+## When to expand investigation or escalate
 
-| 信号 | 需要做什么 |
+| Signal | What to do |
 | --- | --- |
-| 相同模式复发或用户再次纠正 | 重新打开/关联原问题，核对旧修复、旧用例和规则为何未挡住 |
-| 公共组件/规则造成多个页面异常 | 列出受影响消费者，检查共同原因与代表状态，再按范围补验 |
-| 跨模块、数据权威或输入输出语义冲突 | 更新交接合同、失败归属和兼容处理；验证下游接收 |
-| 原测试通过但基础问题漏出 | 区分源码断言、mock 与真实行为的缺口，调整场景/检查层级 |
-| 安全、权限、数据、迁移、生产等重大影响 | 采用项目高风险路径及必要独立审查，不以一般风险接受绕过强制约束 |
-| 连续修复失败或根因仍不明 | 停止重复同一尝试，保留新证据、缩小假设；按项目重试预算做有界研究或请求必要决定 |
+| The same pattern recurs or the user corrects it again | Reopen or link the original issue; check why the old fix, case, and rule did not prevent it |
+| A shared component/rule causes problems on multiple pages | List affected consumers, check the common cause and representative states, then add checks for the scoped impact |
+| Cross-module conflict in data authority or input/output semantics | Update the handoff contract, failure ownership, and compatibility handling; verify downstream acceptance |
+| The original test passed but the underlying issue escaped | Distinguish gaps in source assertions, mocks, and real behavior; adjust scenarios/check level |
+| Major security, permission, data, migration, production, or similar impact | Follow the project's high-risk path and obtain an independent review when needed; do not accept a general risk rationale to bypass mandatory constraints |
+| Fixes repeatedly fail or root cause remains unclear | Stop repeating the same attempt, preserve new evidence, narrow hypotheses, and use bounded research or request a necessary decision under the project's retry budget |
 
-升级由证据触发，不等于所有问题都要全仓重构、全量测试或新增审批。扩展范围时写明新增影响、检查预算和停止条件。
+Escalation is evidence-driven. It does not mean every issue needs a repository-wide refactor, full test run, or new approval. When expanding scope, state the added impact, check budget, and stop conditions.
 
-## 闭环步骤
+## Close the loop
 
-1. 建立能说明问题的复现/证据，保留原失败；无法复现则记录尝试与下一步。
-2. 确认或标注假设：实现为何错、原设计/审查/测试为何放过它。不能把“粗心”当成足够的逃逸原因。
-3. 关联修复任务和预防任务；小问题可同一任务不同验收，避免重复工作量。预防可为公共组件、检查、合同、设计规范或明确的人工审阅步骤，选择最贴近失效原因者。
-4. 复验原问题及受影响消费者；可行时证明新增检查能在旧错误上失败、在修复后通过。无法自动化时给可重复步骤、实际审阅范围与证据，不能虚报自动回归。
-5. 验收分开：修复有效；预防措施已实现；后续适用场景下预防仍有效。没有后续触发时写待效果复验，不无限阻塞已验收的局部修复，也不宣称永久防复发。
-6. 在下一次相关修改、共享消费者接入或适用发布触发效果复验，指定责任/任务。没有新投诉、未触发或未观察不等于有效。
+1. Establish a reproduction or evidence that explains the issue and preserve the original failure. If it cannot be reproduced, record attempts and the next step.
+2. Confirm or label as a hypothesis why the implementation failed and why the original design/review/test allowed it to pass. “Carelessness” alone is not a sufficient escape cause.
+3. Link repair and prevention tasks. For a small issue, one task may have separate acceptance conditions to avoid duplicate effort. Prevention may be a shared component, check, contract, design convention, or explicit manual review step; choose what best matches the failure cause.
+4. Retest the original issue and affected consumers. When feasible, show that the new check fails on the old error and passes after the fix. If automation is not possible, provide repeatable steps, the actual review scope, and evidence; do not claim an automated regression test that did not run.
+5. Keep acceptance separate: the fix works; the prevention measure is implemented; the prevention measure remains effective in a later applicable scenario. If no later trigger has occurred, mark the effectiveness check pending. Do not indefinitely block local fix acceptance, and do not claim permanent prevention.
+6. Assign an owner/task to recheck effectiveness at the next related change, shared-consumer onboarding, or applicable release. No new complaint, trigger, or observation does not prove effectiveness.
 
-## 将经验变成下一次的输入
+## Make lessons inputs to the next task
 
-在项目的权威经验/规则中记录：模式、触发条件、来源问题、适用模块/状态、必须检查、预防任务、证据及效果复验。接入入口规定相关任务开工读取并关联命中项；收工回填检查结果。
+Record the pattern, trigger, source issue, applicable modules/states, required checks, prevention task, evidence, and effectiveness recheck in the project's authoritative lessons/rules. The project entry point should require related tasks to read and link matching lessons before starting; closeout records the check results.
 
-规则升级保留旧规则、新规则、原因、证据、受影响消费者和替代范围。已失效/被新设计取代的规则明确退役；不从历史记录恢复旧风格。经验应解决可复现的模式，不固化一次截图的尺寸或某项目的默认布局。
+When updating a rule, preserve the old and new rules, reason, evidence, affected consumers, and replacement scope. Explicitly retire rules that are obsolete or superseded by a new design; do not restore old styles from historical records. Lessons should address reproducible patterns, not codify the dimensions of one screenshot or one project's default layout.
 
-重复发生时追加事件、重评边界，保留当时“通过”的证据以定位防线缺口；不得通过删除失败或覆盖历史制造连续成功。只有实际执行结果能证明改进，不把文档、提醒、skill 安装或计划中的 CI 当成自动防护已生效。
+For recurrence, append an event and reassess boundaries, preserving the evidence that previously passed so the gap in the defense can be located. Do not create a record of continuous success by deleting failures or overwriting history. Only actual execution results can prove that an improvement is effective; documentation, reminders, skill installation, or planned CI do not prove that automatic protection is active.

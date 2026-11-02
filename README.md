@@ -105,7 +105,7 @@ The skill reads only the references relevant to the task. It keeps **implemented
 
 ## Language and compatibility
 
-The main README is English; [README.zh-CN.md](README.zh-CN.md) provides the Chinese version. The skill instructions, references, and Codex display metadata are currently **written in Chinese**. An English README does not imply that the entire skill has been translated.
+The main README is English; [README.zh-CN.md](README.zh-CN.md) provides the Chinese version. The skill instructions, references, and Codex display metadata are **written in English**. The Chinese README explains installation and usage; it does not duplicate the instruction package.
 
 The package contains Markdown instructions and optional Codex UI metadata. It has no application runtime, package-manager dependencies, background services, or bundled executable automation. Actual tool availability and skill discovery depend on the host agent.
 

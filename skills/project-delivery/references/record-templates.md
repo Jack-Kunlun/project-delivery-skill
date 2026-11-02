@@ -1,97 +1,97 @@
-# 记录模板与追溯关系
+# Record Templates and Traceability
 
-以下是字段，不是强制文件清单。已有 issue/工单/文档承载同样信息就补齐原记录；小项目可合并。编号沿用项目惯例，没有时再定义唯一稳定编号，不重用或重排历史编号。
+The following are fields, not a mandatory file list. If an existing issue, ticket, or document carries the same information, complete that record; small projects may combine records. Keep the project's existing identifiers. If none exist, define a stable, unique identifier scheme; do not reuse or reorder historical identifiers.
 
-追溯关系：来源/需求 → 任务 → 设计/合同 → 产物 → 用例/证据 → 验收 → 发布/观察；问题连接失败证据与修复任务，变更连接新旧范围，经验连接具体问题与预防任务。并非每项都需要独立编号或文件，能定位即可。
+Traceability: source/requirement → task → design/contract → artifact → case/evidence → acceptance → release/observation. Issues link failed evidence to fix tasks, changes link old and new scope, and lessons link specific issues to prevention tasks. Not every item needs its own identifier or file as long as it can be located.
 
-## 任务及当前状态
-
-```text
-编号/类型/标题：
-来源/所属目标或里程碑：
-目标与可观察验收：
-范围/非目标/允许工作区：
-负责者/实际接收者：未分配时写待认领
-状态/优先级/目标版本或承诺日期：未知或未承诺如实写
-依赖/阻塞/下一动作：
-风险与依据/有限检查预算/扩测触发：
-适用设计或合同版本/命中经验：
-产物/实际检查/证据/验收结论：
-尚未验证/遗留/恢复点：
-```
-
-状态与完成标准对应。调查任务完成可表示已得到结论，不能因此把关联产品问题也关闭。卡片中的进展指向同一权威状态，不在岗位账本复制一套。
-
-## 问题（可直接作为任务类型）
+## Task and current status
 
 ```text
-编号/发现时间或记录时间/报告来源：
-原始现象/预期/实际：
-候选与环境/入口/角色/前置/复现步骤：未知就注明
-证据层级：用户报告 / 源码观察 / 已复现 / 修复复验
-严重程度（影响）/优先级（处理顺序）及依据：
-发生/影响/责任/验证边界：
-主责与关联模块/调查或修复任务/下一步：
-实现根因/为何逃过原检查：尚未证实时标假设
-修复产物/同类使用方/预防措施与任务：
-关闭条件/复验人及证据/后续效果复验：
+ID/type/title:
+Source/goal or milestone:
+Goal and observable acceptance:
+Scope/non-goals/allowed workspace:
+Owner/actual recipient: write unassigned if not assigned
+Status/priority/target version or committed date: state unknown or uncommitted as applicable
+Dependencies/blockers/next action:
+Risks and basis/limited check budget/conditions for expanding checks:
+Applicable design or contract version/matching lesson:
+Artifacts/actual checks/evidence/acceptance result:
+Not yet verified/carryover/resumption point:
 ```
 
-无法复现、重复、范围外、已取消、已转交都保留原因和去向；不得写成已修复。合并保留原编号并指向接收项；复发追加事件并重新评估，不删旧“通过”记录。
+Status should match the definition of done. Completing an investigation task may mean that a conclusion was reached; it does not close the related product issue. A task card's progress should point to the same authoritative status rather than duplicating it in a role-based ledger.
 
-## 临时需求与决定
+## Issue (may be a task type)
 
 ```text
-编号/来源原话/记录日期：
-分类：澄清或补充 / 缺陷 / 新功能 / 紧急处置 / 想法
-原范围与本次变化/理由：
-受影响需求、模块、消费者、验收和目标版本：
-优先顺序/依赖/工期或风险取舍（未估算写待评估）：
-决定/决定者与授权依据/取代哪个决定的哪部分：
-关联任务：沿用原任务或新建，说明原因
-被中断任务的状态/已做与未做/恢复点/恢复条件：
+ID/discovery or record date/report source:
+Observed behavior/expected/actual:
+Candidate and environment/entry point/role/prerequisites/reproduction steps: state unknown if not known
+Evidence level: user report / source observation / reproduced / fix reverified
+Severity (impact)/priority (handling order) and basis:
+Occurrence/impact/ownership/verification boundaries:
+Lead and related module/investigation or fix task/next step:
+Implementation root cause/why the original check missed it: label as a hypothesis until verified
+Fix artifact/similar consumers/prevention measure and task:
+Closure conditions/reviewer and evidence/follow-up effectiveness recheck:
 ```
 
-想法登记不等于承诺；紧急缺陷也保留范围与最小必要验证。旧结论通过追加修订被替代，不静默改写用户原要求。
+Preserve reasons and destinations for issues that cannot be reproduced, are duplicates, out of scope, canceled, or transferred; do not describe them as fixed. When merging, retain the original ID and point it to the receiving item. For recurrence, append an event and reassess; do not delete the old “pass” record.
 
-## 模块及阶段交接
+## Temporary request and decision
 
 ```text
-模块/合同版本/源模块 → 目标模块：
-负责什么/不负责什么：
-数据与状态权威/谁能写/读者与消费者：
-输入：来源、格式、前置、权限、校验
-输出：结构、语义、完成状态、错误与副作用
-失败、超时、重试/幂等及回退责任：按适用性填写
-上游依赖/下游消费者/兼容或迁移影响：
-交付物与版本/实际交付者/接收者：
-接收条件/检查与证据/未决项：
-拒收原因/退回任务/再接收条件：
+ID/source wording/date recorded:
+Category: clarification or addition / defect / new feature / emergency response / idea
+Original scope and current change/reason:
+Affected requirements, modules, consumers, acceptance, and target version:
+Priority/dependencies/schedule or risk tradeoff (write pending assessment if not estimated):
+Decision/decision-maker and authorization basis/which part of which decision it replaces:
+Related task: reuse the original or create a new one, and explain why
+Interrupted task's status/completed and remaining work/resumption point/resumption conditions:
 ```
 
-源码职责是事实；协作职责是约定；未来拆分是计划，三者分开。不能为接通而静默改上游语义、绕过权限或吞掉错误。合同变化要追踪全部受影响消费者；未知消费者写调查任务。无需强制把单体拆成服务。
+Recording an idea does not commit to it; emergency defects still retain their scope and minimum necessary verification. Replace old conclusions by appending revisions; do not silently rewrite the user's original request.
 
-## 测试用例与证据
+## Module and phase handoff
 
 ```text
-用例编号/关联需求、任务、模块、风险：
-角色/环境/前置数据（脱敏或隔离）/页面与状态：
-步骤/输入/期望断言/明确失败条件：
-层级：源码/单元/模块/数据库/浏览器/视觉/外部集成/线上观察
-自动或人工/运行入口：
-实际候选或快照/规范与设计版本/工具与配置/执行时间：
-实际结果：通过 / 失败 / 跳过 / 阻塞 / 未执行
-证据位置/关联问题/未覆盖项/需要重验的触发：
+Module/contract version/source module → target module:
+Responsibilities/in-scope and out-of-scope:
+Data and state authority/who may write/readers and consumers:
+Inputs: source, format, prerequisites, permissions, validation
+Outputs: structure, semantics, completion status, errors, and side effects
+Failure, timeout, retry/idempotency, and fallback ownership: fill in as applicable
+Upstream dependencies/downstream consumers/compatibility or migration impact:
+Deliverable and version/actual sender/recipient:
+Acceptance conditions/checks and evidence/open items:
+Rejection reason/return task/conditions for reacceptance:
 ```
 
-对持续变化文件只给路径可能无法恢复候选，按项目条件补提交、制品摘要或文件哈希。证据存仓库允许的位置或已授权系统；临时测试和大体积产物按项目规则留本地，交付说明其可用性。不要为了“有迹可循”提交秘密或所有临时材料。
+Source-code responsibilities are facts; collaboration responsibilities are agreements; future decomposition is a plan. Keep them separate. Do not silently change upstream semantics, bypass permissions, or swallow errors to make an integration work. Track every affected consumer when a contract changes; create an investigation task for unknown consumers. There is no requirement to split a monolith into services.
 
-## 事件、已有成果及改进
+## Test case and evidence
 
-- **事件**：日期与事件性质、关联编号、实际操作者、原状态→新状态、原因、产物/证据。关键开工、阻塞、插单、验收、取消/合并、收工留下记录；不抄每条工具日志。补录标明记录日期与实际发生时间的区别。
-- **已有成果**：能力/模块、用户可观察行为、源码/历史来源、实现/验收/发布/线上验证各自状态、版本/日期（已知才填）、限制及当前问题。新缺陷不抹掉历史交付事实。
-- **改进/经验**：模式、来源问题、适用触发、实现根因与逃逸原因、规则前后差异、受影响模块、预防任务、有效性检查和复验时点、替代/退役关系。按 [持续改进](improvement.md) 闭环。
+```text
+Case ID/related requirement, task, module, and risk:
+Role/environment/prerequisite data (redacted or isolated)/page and state:
+Steps/inputs/expected assertions/explicit failure conditions:
+Level: source/unit/module/database/browser/visual/external integration/production observation
+Automated or manual/entry point to run:
+Actual candidate or snapshot/specification and design version/tools and configuration/execution time:
+Actual result: pass / fail / skipped / blocked / not run
+Evidence location/related issue/uncovered areas/retest trigger:
+```
 
-## 收工记录
+For files that change continuously, a path alone may not be enough to restore the candidate; add a commit, artifact digest, or file hash as appropriate for the project. Store evidence only in repository-approved locations or authorized systems. Keep temporary tests and large artifacts local when project rules require it, and explain their availability in the delivery notes. Do not commit secrets or every temporary artifact just to create a trail.
 
-写清本轮已完成与未完成、实际验证范围、当前状态、阻塞、下一步、工作区/候选身份及未提交材料位置。不能用“后续优化”隐藏验收缺口，也不能把规划任务默认交给不存在的人或 Agent。
+## Events, existing outcomes, and improvements
+
+- **Event:** Date and event type, related ID, actual operator, previous state → new state, reason, artifact/evidence. Record key starts, blockers, interruptions, acceptance, cancellation/merger, and closeout; do not copy every tool log. For backfills, distinguish the record date from when the event actually occurred.
+- **Existing outcome:** Capability/module, user-observable behavior, source/history, separate implementation/acceptance/release/production-verification statuses, version/date (if known), limits, and current issues. A new defect does not erase the historical delivery fact.
+- **Improvement/lesson:** Pattern, source issue, applicable trigger, implementation root cause and escape reason, before/after rule, affected modules, prevention task, effectiveness check and retest time, replacement/retirement relationship. Close the loop according to [Continuous Improvement](improvement.md).
+
+## Closeout record
+
+State what was and was not completed this round, actual verification scope, current status, blockers, next steps, workspace/candidate identity, and location of uncommitted material. Do not hide acceptance gaps behind “follow-up improvements,” and do not assign planned work by default to a nonexistent person or agent.

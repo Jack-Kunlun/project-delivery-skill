@@ -1,4 +1,4 @@
 interface:
-  display_name: "项目研发交付流程"
-  short_description: "跨项目维护需求、任务、模块交接、测试验收与问题持续改进的完整流程"
-  default_prompt: "使用 $project-delivery，为当前项目建立研发交付流程并盘点任务、问题和已有成果。"
+  display_name: "Project Delivery"
+  short_description: "Track project work from requirements to release"
+  default_prompt: "Use $project-delivery to establish this project's delivery workflow and inventory tasks, issues, and existing capabilities."

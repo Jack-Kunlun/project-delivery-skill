@@ -1,60 +1,60 @@
 ---
 name: project-delivery
-description: "建立或维护跨项目研发交付流程：项目总览与进度、任务和问题台账、临时需求变更、PRD/原型/UI/UX、模块交接、测试覆盖、验收发布及复发问题改进。适用于用户要求规范落地、首次建账、接手老旧项目、盘点已有成果或持续追踪交付；已有流程时沿用其权威记录。普通单点编码任务不因此自动触发全项目治理改造。"
+description: "Establish or maintain project delivery workflows: project overview and progress, tasks and issues, ad hoc scope changes, PRDs/prototypes/UI/UX, module handoffs, test coverage, acceptance, releases, and recurring-defect improvement. Use for process adoption, a first work ledger, legacy-project takeover, inventorying delivered capabilities, or ongoing delivery tracking. Reuse authoritative records where they exist. A routine isolated coding request does not automatically require project-wide governance changes."
 ---
 
-# 项目研发交付流程
+# Project Delivery
 
-让工作可以接续、问题可以追踪、交付可以核验。管理资料应服务当前工作，不能把文档数量当成进度或质量。
+Make work resumable, issues traceable, and delivery verifiable. Records should serve current work; their volume is not evidence of progress or quality.
 
-## 先确定使用路径
+## Choose the adoption path
 
-1. **已有台账/流程**：读取项目入口、当前任务、最近决定与相关经验；沿用其文件、外部系统、编号和状态。不另建可变状态副本。
-2. **没有台账**：按 [项目接入](references/adopt-project.md) 盘点并首次建账。小项目可一份文档起步；先有可执行记录，不先造一套空文件。
-3. **老旧或情况不明的项目**：同时读 [老旧项目接管](references/legacy-project.md)，从现状基线渐进接管；没有 PRD、测试、Git 或可运行环境也可记录，但不伪造验证。
-4. **仅询问流程/评审方案**：回答所问或给出建议；没有写入请求或既有项目约定时，不自动接入整个项目。
+1. **Existing ledger or process:** Read the project entry point, current task, recent decisions, and relevant lessons. Reuse its files, external systems, identifiers, and states. Do not create a second mutable status source.
+2. **No ledger:** Follow [Project adoption](references/adopt-project.md) to inventory the project and create its first records. A small project can start with one document; create actionable records before a collection of empty files.
+3. **Legacy or poorly understood project:** Also read [Legacy-project takeover](references/legacy-project.md). Establish a current-state baseline and adopt incrementally. Missing PRDs, tests, Git history, or a runnable environment do not prevent documentation, but never invent verification.
+4. **Process questions or proposal review only:** Answer the question or offer recommendations. Without a request to write or an existing project convention, do not automatically adopt the entire project.
 
-先核实实际项目根目录、工作区及本次授权。当前目录可能只是原型或备份；候选身份不明时只做可安全进行的盘点，不能拿错项目实施。阅读适用 AGENTS 和既有规范，保留用户改动。项目自己的安全、测试、设计及发布要求优先于这里的默认模板。
+First establish the actual project root, worktree, and current authorization. The current directory may be a prototype or backup. If candidate identity is uncertain, continue only safe inventory work; do not implement in the wrong project. Read applicable AGENTS and existing conventions, and preserve user changes. The project's own security, testing, design, and release requirements take precedence over these default templates.
 
-## 依任务按需读参考
+## Read references as needed
 
-| 当前工作 | 参考 |
+| Current work | Reference |
 | --- | --- |
-| 首次接入、总览、进度和状态来源映射 | [项目接入](references/adopt-project.md) |
-| 老系统、缺失资料、环境失效、历史行为不明 | [老旧项目接管](references/legacy-project.md) |
-| 建任务、记问题、插单、交接、证据、收工 | [记录模板](references/record-templates.md)；只取适用字段 |
-| 需求到上线、原型/UI、测试边界与场景覆盖 | [交付门槛](references/delivery-gates.md) |
-| 复发、漏测、责任/影响扩大、改进效果 | [持续改进](references/improvement.md) |
+| Initial adoption, overview, progress, and authoritative-source mapping | [Project adoption](references/adopt-project.md) |
+| Old systems, missing records, broken environments, or uncertain historical behavior | [Legacy-project takeover](references/legacy-project.md) |
+| Tasks, issues, interruptions, handoffs, evidence, and wrap-up | [Record templates](references/record-templates.md); use only applicable fields |
+| Requirements through release, prototypes/UI, testing boundaries, and scenario coverage | [Delivery gates](references/delivery-gates.md) |
+| Recurrence, escaped defects, expanded ownership/impact, and improvement effectiveness | [Continuous improvement](references/improvement.md) |
 
-不每轮全量加载参考或扫描整个仓库；先查当前任务需要的权威记录。
+Do not load every reference or scan the whole repository on every turn. Start with the authoritative records needed for the current task.
 
-## 每轮工作闭环
+## The work loop
 
-1. **恢复上下文**：当前目标、基线/设计版本、任务状态、依赖、最近变更、命中经验及未验证项。来源冲突先分清现状、目标和历史。
-2. **登记与定界**：实质执行前关联已有任务或建任务，写目标、范围/非目标、来源、实际责任、可观察验收、依赖、风险和有限验证预算。小步骤留在同一任务；不为每条命令造任务。尚未复现的问题也要保留来源、处理入口和下一步。
-   首次接入/整理文档也是实质工作，必须在沿用的台账中留记录；不能只为将来的业务需求建任务。关键事件可写入同一任务，不要求单独日志文件。
-3. **执行与交接**：按项目惯例实施。跨模块先明确输入/输出、状态权威、失败归属和接收条件；上游完成不代表下游集成通过。同人担任多角色也要留下接收证据，不假定已启动 Agent 或独立审查。
-4. **验证与验收**：执行适用门槛与项目强制检查，记录实际候选、环境、工具、结果和缺口。失败回到对应任务；关键未知保留待核实。只有出现新影响、检查失败或项目要求时才扩测。
-5. **收工与接续**：更新唯一状态台账，追加关键事件和决定，关联产物/证据，记录遗留、阻塞、恢复点及下一步。用户验收与执行者内部验收分开；未被确认的结果不写成用户认可。
+1. **Restore context:** Identify the current goal, baseline/design version, task state, dependencies, recent changes, applicable lessons, and unverified items. When sources conflict, distinguish observed behavior, intended behavior, and history.
+2. **Record and bound the work:** Before substantive execution, associate an existing task or create one. Record the goal, scope/non-goals, source, actual ownership, observable acceptance criteria, dependencies, risk, and a bounded verification budget. Keep small steps under the same task instead of creating a task for every command. Retain the source, handling entry point, and next step even for an issue that has not been reproduced.
+   Initial adoption and documentation are substantive work too: record them in the authoritative ledger, not just future product requests. Key events can live inside the task; a separate event-log file is not required.
+3. **Execute and hand off:** Follow project conventions. For cross-module work, first establish inputs/outputs, state authority, failure ownership, and receiving criteria. Upstream completion does not establish downstream integration success. Record receiving evidence even when one person fills multiple roles; do not imply that an agent or independent review actually ran.
+4. **Verify and accept:** Run applicable gates and mandatory project checks. Record the actual candidate, environment, tools, results, and gaps. Return failures to the relevant task and retain critical unknowns as unresolved. Expand checks only for new impact, a failed check, or a project requirement.
+5. **Wrap up and resume:** Update the single authoritative status ledger. Append key events and decisions, link artifacts/evidence, and record remaining work, blockers, the resumption point, and the next step. Separate user acceptance from the executor's internal acceptance; do not describe an unconfirmed result as user approval.
 
-状态沿用项目已有体系。缺省可用：待澄清 → 待开始 → 进行中 → 待验收 → 已验收；阻塞、取消、合并、重开保留原因和关联。已实现、已验收、已发布、线上已验证分别记录；不要用“完成”掩盖环境边界。阶段可以合并或不适用，但应留下理由和仍须满足的接收条件，不新增逐阶段审批。
+Preserve the project's state model. If none exists, a useful default is: Needs clarification → Not started → In progress → Awaiting acceptance → Accepted. Retain reasons and links for blocked, canceled, merged, or reopened work. Record implemented, accepted, released, and production-verified states separately; a generic “done” must not hide environment boundaries. Stages may be combined or marked not applicable, with reasons and remaining receiving criteria. Do not add approval at every stage.
 
-## 总进度与变更
+## Overall progress and changes
 
-- 总览同时包含产品已有能力、已交付成果、当前目标、里程碑、风险/依赖与下一步；不能只统计本轮整理文档的任务。
-- 每项状态只有一个权威来源。总览是带日期/基线的摘要；角色视图和模块清单只链接任务，不维护第二份实时状态。
-- 先明确纳入范围、完成定义和权重再报百分比。条件不足时给已验收/待验收/受阻的具体范围；未知不得填 0 或 100%。历史事实有来源再补录，不补造日期、人员、承诺或测试。
-- 临时要求先分类：澄清/补充、缺陷、新功能、紧急处置、想法。记录原话/来源、影响与取舍，关联任务和受影响验收；中断工作时留下原任务恢复点。缺陷严重程度与排期优先级分开，插单不自动最高优先。
-- 已授权范围内明确的小变更继续做；实质产品取舍、范围/时间承诺冲突或不可逆影响才请求决定。不把写入待办当成执行或发布授权。
+- Include existing product capabilities, delivered outcomes, current goals, milestones, risks/dependencies, and next steps in the overview. Do not report only the current documentation tasks.
+- Give each status one authoritative source. The overview is a dated, baseline-specific summary; role views and module inventories link to tasks rather than maintain another live status list.
+- Define scope, completion criteria, and weights before reporting percentages. Without them, describe the specific accepted, pending, or blocked scope; unknown is neither 0% nor 100%. Backfill history only from evidence, never invented dates, people, commitments, or tests.
+- Classify interruptions as clarification/addition, defect, new feature, urgent response, or idea. Record the original wording/source, impact, and tradeoff; link tasks and affected acceptance criteria. Leave a resumption point when interrupting work. Separate defect severity from scheduling priority; an interruption is not automatically top priority.
+- Continue clear, small changes within existing authorization. Request a decision only for material product choices, scope/date commitment conflicts, or irreversible consequences. A backlog entry is not execution or release authorization.
 
-## 可复用的质量约束
+## Reusable quality constraints
 
-- 原型及 UI 交付复用项目现有视觉语言和组件，核对实际渲染。对齐、间距、长文本和状态覆盖按 [交付门槛](references/delivery-gates.md) 验收；截图生成或源码断言不能单独证明视觉正确。
-- 测试覆盖以确认的场景集合为分母，区分设计覆盖、执行覆盖、通过覆盖和代码覆盖；mock、跳过、未配置和未运行都要标明。
-- 收到“又出现、反复、之前修过”等复发信号时，必须读取 [持续改进](references/improvement.md)。问题记录既要有调查/修复去向，也要说明预防措施、同类消费者与效果复验如何接续；未复现时可把它们写为待调查后的验收要求，不能虚构已实现的防线。记录经验不等于防复发生效。
-- 项目经验与规则留在项目权威记录中，接入时提供后续必读入口。不要因一次项目经验自动改个人全局记忆、此 skill 或其他项目。
-- 文档流程本身不提供自动审计、持续监控或 CI 阻断。需要自动化时另建有授权、验收和证据的任务。
+- Prototype and UI delivery should reuse the project's visual language and components and inspect actual rendering. Check alignment, spacing, long text, and applicable states using [Delivery gates](references/delivery-gates.md). Producing screenshots or asserting source text alone does not prove visual correctness.
+- Use an agreed scenario set as the coverage denominator. Distinguish designed, executed, passed, and code coverage; identify mocks, skips, missing configuration, and checks that were not run.
+- On recurrence signals such as “again,” “recurring,” or “already fixed,” read [Continuous improvement](references/improvement.md). Issue records need an investigation/fix path and a follow-up path for prevention, similar consumers, and effectiveness checks. Before reproduction, these may be requirements for later investigation; never invent an implemented safeguard. A recorded lesson is not proof that recurrence has been prevented.
+- Keep project lessons and rules in the project's authoritative records and establish an entry point that relevant future tasks must read. A single project's experience must not automatically modify personal global memory, this skill, or another project.
+- This documentation workflow does not itself provide automatic audits, continuous monitoring, or CI blocking. Track automation as separately authorized work with acceptance criteria and evidence.
 
-## 交付说明
+## Delivery report
 
-说明更新了哪里、完成到哪一层、实际做了哪些检查、遗留和下一步。首次接入给出唯一入口和记录职责；后续只说明增量。避免复述整套规范。提交、推送、上线和通知他人仍遵循本次授权与项目既有要求。
+State what changed and where, which level of completion was reached, which checks actually ran, and the remaining work/next step. On initial adoption, give the single entry point and record-keeping responsibilities; afterward report the increment. Avoid repeating the whole process. Commits, pushes, releases, and messages to others remain subject to actual authorization and existing project requirements.

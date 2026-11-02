@@ -1,67 +1,67 @@
-# 交付阶段、测试与设计门槛
+# Delivery Phases, Testing, and Design Gates
 
-阶段是职责与接收条件，可合并执行；轻量改动可标不适用并说明原因。接收者是职责，不要求新增岗位、Agent 或用户审批。每次只执行当前任务适用的阶段和本项目强制检查。
+Phases describe responsibilities and acceptance conditions and may be combined. A lightweight change may mark a phase not applicable and explain why. A recipient is a responsibility; it does not require a new role, agent, or user approval. Perform only phases that apply to the current task and checks required by the project.
 
-## 从需求到上线
+## From requirements to release
 
-| 阶段 | 应交付什么 | 通过与接收条件 | 未通过回到哪里 |
+| Phase | Expected deliverable | Pass and acceptance conditions | Where to return on failure |
 | --- | --- | --- | --- |
-| 立项/范围 | 用户问题、目标、成功标准、范围/非目标、依赖、风险与任务 | 需求负责人能判断为什么做、做什么及授权范围；未知有去向 | 澄清目标/范围，保留可独立推进部分 |
-| PRD/规格 | 角色、主流程、业务规则、权限、异常、验收及需求版本 | 设计/开发/测试对可观察行为无关键歧义；小改动可在任务卡表达 | 需求或变更记录 |
-| 原型/UI/UX | 状态与交互、内容和组件、视觉基准、适用视口/主题/语言 | 业务链路可走通，复用规范，实际检查适用状态；设计与开发接收 | 设计任务与缺陷 |
-| 技术拆分/合同 | 模块责任、数据权威、接口/错误、依赖、切片与测试方案 | 上下游都能据合同实施/验证；兼容与高风险取舍有结论 | 规格/合同任务 |
-| 开发 | 受控范围内代码/配置/文档、必要测试、差异及自检 | 实现与规格一致，强制检查通过；遗留明确；交给测试的候选可识别 | 实现任务 |
-| 测试 | 场景清单、实际执行结果、覆盖边界、缺陷及复验 | 适用必测项有有效证据；失败/跳过/未知不冒充通过 | 缺陷修复或测试准备 |
-| 产品/设计验收 | 对照需求和视觉基准的候选、证据、遗留处置 | 指定接收者确认范围与结果；内部验收和用户验收分别记录 | 对应需求/设计/实现任务 |
-| 发布准备 | 精确候选、适用 CI/构建证据、发布步骤、依赖、观察与回退评估 | 证据与候选一致；阻断项解决；授权和项目发布要求已满足 | 缺口任务；不得用旧版本通过结果顶替 |
-| 发布 | 按项目既有方式交付的版本/制品与实际执行记录 | 目标环境、候选身份、配置/迁移及健康符合本项目要求 | 依既定计划停止或回退，保留事件 |
-| 上线观察 | 关键链路/错误/反馈观察、交付记录、问题与经验 | 约定观察范围有证据；异常入账，后续责任明确 | 缺陷与改进闭环 |
+| Initiation/scope | User problem, goal, success criteria, scope/non-goals, dependencies, risks, and task | The requirements owner can determine why the work is needed, what it includes, and its authorized scope; unknowns have a destination | Clarify goal/scope while preserving independently actionable work |
+| PRD/specification | Roles, main flows, business rules, permissions, exceptions, acceptance, and requirement version | Design/development/test have no material ambiguity about observable behavior; small changes may be specified on the task card | Requirements or change record |
+| Prototype/UI/UX | States and interactions, content and components, visual baseline, applicable viewport/theme/language | The business flow is usable, conventions are reused, applicable states are actually checked, and design/development accept it | Design task and defects |
+| Technical breakdown/contract | Module responsibilities, data authority, interfaces/errors, dependencies, slices, and test plan | Upstream and downstream can implement/verify from the contract; compatibility and high-risk tradeoffs are resolved | Specification/contract task |
+| Development | Code/configuration/documentation within controlled scope, necessary tests, diff, and self-check | Implementation matches specification, required checks pass, carryover is clear, and the candidate handed to testing is identifiable | Implementation task |
+| Testing | Scenario list, actual execution results, coverage boundaries, defects, and retest | Applicable required items have valid evidence; failures, skips, and unknowns are not called passes | Defect fix or test preparation |
+| Product/design acceptance | Candidate compared with requirements and visual baseline, evidence, and carryover disposition | The designated recipient confirms scope and result; internal acceptance and user acceptance are recorded separately | Related requirements/design/implementation task |
+| Release preparation | Exact candidate, applicable CI/build evidence, release steps, dependencies, observation, and rollback assessment | Evidence matches the candidate; blockers are resolved; authorization and project release requirements are met | Gap task; do not substitute a pass from an older version |
+| Release | Version/artifact delivered using the project's existing method and actual execution record | Target environment, candidate identity, configuration/migrations, and health meet project requirements | Stop or roll back under the established plan and retain the event record |
+| Post-release observation | Key-flow/error/feedback observations, delivery record, issues, and lessons | The agreed observation scope has evidence; anomalies are recorded and follow-up ownership is clear | Defect and improvement loop |
 
-发布方式、必须检查、备份/恢复、观察窗口均取自目标项目；不要把某项目的镜像、Workflow 或人工步骤变成通用硬要求。没有发布授权时完成已授权的准备，明确缺少的最后一步；不默认提交、推送或上线。
+Release methods, required checks, backup/recovery, and observation windows come from the target project. Do not turn a project's container image, workflow, or manual steps into universal hard requirements. Without release authorization, complete the authorized preparation and state the missing final step; do not assume a commit, push, or deployment is authorized.
 
-## 原型、UI 与 UX
+## Prototype, UI, and UX
 
-先确认有效设计版本和现有组件/样式来源。旧项目若无规范，记录实际当前基线与已知不一致，为本次变更定义局部可验收约束；未经授权不重新设计全站。
+First confirm the valid design version and the sources of existing components/styles. If a legacy project has no conventions, record the actual current baseline and known inconsistencies, then define locally acceptable constraints for this change; do not redesign the whole site without authorization.
 
-按变更范围建立页面/组件 × 状态 × 视口 × 主题/语言的适用清单；不是所有项目都要笛卡尔积全测。整体风格迁移需完整受影响入口/共享组件清单，标出已迁移、豁免理由和未验收项，不能仅看代表页就宣布全站统一。
+For the change scope, create an applicability list across pages/components × states × viewports × themes/languages; not every project needs exhaustive testing of the full Cartesian product. A site-wide style migration needs a complete list of affected entry points/shared components, with migrated items, reasons for exemptions, and unaccepted items identified. Do not declare the whole site consistent after looking only at representative pages.
 
-适用检查包括：
+Applicable checks include:
 
-- **对齐与结构**：图标与文字基线、单/多行垂直对齐、表头/内容列线、列表间距、按钮与输入同行布局；错误出现后不让邻近操作漂移。
-- **边距与尺寸**：容器 padding、子项 gap、首末项边距、滚动/固定区、安全区、弹窗/抽屉可用空间；避免双重间距、边距丢失、溢出和遮挡。
-- **内容与状态**：空/加载/失败/禁用、长文本/多语言、零值/极值、不同数据量、权限差异、交互反馈；适用时核对键盘、焦点与辅助阅读。
-- **视觉一致**：当前 tokens/主题、字体层级、图标尺寸和组件变体；不套用统一居中、字号或固定像素规则替代项目规范。
-- **UX 完整**：主路径、返回/取消/恢复、错误纠正、关键操作确认、数据含义一致；原型成功不代表上传、保存、外部接口或生产链路已验证。
+- **Alignment and structure:** Icon and text baselines, vertical alignment for single/multiple lines, header/content column alignment, list spacing, and inline button/input layout; neighboring actions must not shift when an error appears.
+- **Spacing and dimensions:** Container padding, child gaps, first/last item margins, scrolling/fixed regions, safe areas, and usable dialog/drawer space; avoid doubled spacing, missing margins, overflow, and occlusion.
+- **Content and states:** Empty/loading/failure/disabled, long text/multiple languages, zero/extreme values, different data volumes, permission differences, and interaction feedback; check keyboard, focus, and assistive reading when applicable.
+- **Visual consistency:** Current tokens/theme, type hierarchy, icon sizing, and component variants; do not use universal centering, font-size, or fixed-pixel rules in place of project conventions.
+- **UX completeness:** Main path, back/cancel/recovery, error correction, confirmation of critical actions, and consistent data meaning; a successful prototype does not prove upload, save, external interface, or production-flow validation.
 
-验证使用实际渲染和明确比对；自动几何/视觉差异辅助发现问题，人工审阅负责判断可读性与设计意图。记录实际看的页面/配置，不能把自动截图数量写成逐张审阅。更新快照须解释预期差异，不得为测试变绿直接接受全部新图。
+Verify with actual rendering and explicit comparison. Automated geometry/visual differences help find issues; direct visual review assesses readability and design intent. Record the pages/configuration actually reviewed; do not describe a count of automated screenshots as a screenshot-by-screenshot review. Explain expected differences when updating snapshots; do not accept all new images merely to make tests pass.
 
-对流程图/说明图，优先主线、例外、支撑分层，详情按需展开。实际尺寸看字、连线、断行及窄屏；统计节点和链接不能证明图适合阅读。
+For flow or explanatory diagrams, prioritize the main path, exceptions, and supporting layers, expanding detail as needed. At actual size, inspect text, connectors, wrapping, and narrow-screen readability; counts of nodes and links do not prove a diagram is readable.
 
-## 测试边界与覆盖口径
+## Test boundaries and coverage definitions
 
-需求/风险 → 场景 → 用例 → 执行证据 → 问题/验收建立映射。至少区分：
+Map requirements/risks → scenarios → cases → execution evidence → issues/acceptance. At minimum, distinguish:
 
-| 证据 | 能证明的范围 | 不能替代 |
+| Evidence | What it can prove | What it cannot replace |
 | --- | --- | --- |
-| 源码/静态约束 | 结构、类型或特定写法 | 行为成功、视觉正确 |
-| 单元/模块行为 | 给定输入与边界内输出 | 真实数据库/权限/外部服务 |
-| 数据库或服务集成 | 指定环境的数据与服务交互 | 浏览器布局与第三方真实现场 |
-| 浏览器交互 | 实际页面状态与操作 | 未接入的服务或生产行为 |
-| 渲染/视觉审阅 | 指定视口、状态、主题及内容 | 未审阅页面/状态或全部业务 |
-| 真实外部/上线观察 | 指定目标与时间的现场结果 | 永久正确或其他候选 |
+| Source/static constraints | Structure, types, or specific coding patterns | Successful behavior or visual correctness |
+| Unit/module behavior | Outputs for given inputs within tested boundaries | Real database/permissions/external services |
+| Database or service integration | Data and service interactions in a specified environment | Browser layout or a third party's actual environment |
+| Browser interaction | Actual page states and operations | Services not connected or production behavior |
+| Rendering/visual review | Specified viewport, state, theme, and content | Unreviewed pages/states or all business behavior |
+| Real external/production observation | Observed results for a specified target and time | Permanent correctness or another candidate |
 
-场景集合应先明确范围和分母，例如角色/权限、主路径、错误/边界、跨模块、回归及 UI 状态。场景变化有版本，排除项有理由。一个场景多条用例不重复算场景；场景必需断言有失败就不能列为该场景通过。
+Define the scope and denominator of the scenario set first, for example roles/permissions, main flows, errors/boundaries, cross-module behavior, regression, and UI states. Version changes to the scenario set and explain exclusions. Multiple cases for one scenario do not count that scenario multiple times; if any required assertion for a scenario fails, that scenario cannot be counted as passing.
 
-- **设计覆盖** = 有可执行用例的范围内场景 / 确认的范围内场景。
-- **执行覆盖** = 本候选环境下完成适用检查并有结果的场景 / 确认的范围内场景；失败算已执行，跳过/阻塞不算已完成。
-- **通过覆盖** = 本候选环境下所有适用必需检查有效通过的场景 / 确认的范围内场景。
-- **执行通过率** = 已通过场景 / 已完成执行场景；必须同时给出执行覆盖，不能用少量全通过掩盖未测。
-- **代码覆盖** 单独说明工具、文件/包范围及 lines/branches/functions；不等于场景覆盖。
+- **Design coverage** = in-scope scenarios with executable cases / confirmed in-scope scenarios.
+- **Execution coverage** = scenarios with applicable checks completed and results recorded in this candidate environment / confirmed in-scope scenarios; failures count as executed, skips/blocks do not count as completed.
+- **Pass coverage** = scenarios for which all applicable required checks validly passed in this candidate environment / confirmed in-scope scenarios.
+- **Execution pass rate** = passed scenarios / scenarios with completed execution; report execution coverage as well, so a small number of passing checks cannot hide what was not tested.
+- **Code coverage** is reported separately with its tool and file/package scope and lines/branches/functions; it is not scenario coverage.
 
-报告给分子/分母、范围基线、候选/环境、失败/跳过/未知及排除项。没有确认分母就写“覆盖率尚不可计算”，不能凭测试文件数猜。阈值依据项目风险与约定，不统一要求 100%；本次必须满足的关键验收不能以总体百分比稀释。
+Report numerator/denominator, scope baseline, candidate/environment, failures/skips/unknowns, and exclusions. If the denominator has not been confirmed, write “coverage not yet calculable”; do not guess from the number of test files. Set thresholds based on project risk and agreements; there is no universal 100% requirement. Do not dilute a critical acceptance condition for this task with an overall percentage.
 
-## 验证预算与证据复用
+## Verification budget and evidence reuse
 
-先列直接行为检查和项目强制命令，必要时再跑受影响模块检查。低影响文档通常检查差异/引用即可；共享模块关注消费者；高风险按项目要求验证并安排独立审查。不得覆盖仓库明定门禁或省略检查失败。
+List direct behavior checks and project-required commands first, then run affected-module checks if needed. For low-impact documentation, a diff/reference check is usually enough; for shared modules, consider consumers; for high-risk work, verify according to project requirements and arrange an independent review. Do not override repository-mandated gates or omit failed checks.
 
-相同内容、输入、规范、工具/配置和环境的可靠成功证据可复用。候选变化时先核对受影响范围；相关身份变化或失败不能复用原通过结论。无法执行的检查列原因和剩余风险，涉及必须验收的部分保持未通过。所有命令/Agent/模型/检查只记录实际使用者，不将计划当执行。
+Reliable passing evidence may be reused when content, inputs, specifications, tools/configuration, and environment are the same. When a candidate changes, first check the affected scope; a relevant identity change or failure means the prior pass cannot be reused. Record why checks could not be run and the remaining risk; required acceptance that has not been verified remains unpassed. Record only commands, agents, models, and checks actually used; a plan is not execution.

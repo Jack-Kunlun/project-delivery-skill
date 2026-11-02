@@ -1,50 +1,50 @@
-# 老旧项目的渐进接管
+# Gradual Takeover of Legacy Projects
 
-旧技术、缺少测试或没有台账不等于必须重写。先获得可信的现状和可维护范围，再按每次变更补足质量约束。
+Old technology, missing tests, or the absence of a ledger does not mean the project must be rewritten. First establish a trustworthy picture of its current state and maintainable scope, then add quality constraints with each change.
 
-## 识别接管状态
+## Identify the takeover state
 
-| 已有材料/能力 | 本次可做的基线 | 不应声称 |
+| Existing material/capability | Baseline to record now | Do not claim |
 | --- | --- | --- |
-| 有源码及可运行本地环境 | 记录启动条件、代表场景、当前输出与问题 | 本地能跑等于生产正常 |
-| 有源码但运行失败/依赖服务缺失 | 记录尝试、失败条件、源码观察和恢复任务 | 源码推断等于行为通过 |
-| 无 Git 历史、旧包或散落备份 | 确认可修改副本、快照时间与文件哈希，标明来源缺口 | 自动把最新文件时间当正式版本或创建虚假提交历史 |
-| 只有生产可访问 | 从获准的只读观测/脱敏材料记录；需要副本或测试环境则登记 | 在生产做试验写入、自动抓取敏感数据或直接升级 |
-| 文档与实现冲突 | 并列记录“文档要求 / 实现观察 / 待决定” | 默认把旧实现当正确需求，或默认照旧文档改代码 |
+| Source code and a runnable local environment | Record startup conditions, representative scenarios, current output, and issues | Running locally means production is healthy |
+| Source code, but it fails to run or a dependent service is missing | Record attempts, failure conditions, source observations, and a recovery task | An inference from source code means behavior passed |
+| No Git history, an old package, or scattered backups | Identify the copy that may be changed, snapshot time, and file hashes; mark gaps in provenance | Treating the newest file timestamp as the official version or inventing commit history |
+| Only production is accessible | Record authorized read-only observations or redacted materials; register a need for a copy or test environment | Experimental writes in production, automatic collection of sensitive data, or a direct upgrade |
+| Documentation conflicts with implementation | Record “documented requirement / implementation observation / decision pending” side by side | Assuming the old implementation is the correct requirement or changing code by default to match old documentation |
 
-如果本次只要求治理接入，运行环境恢复、依赖更新和业务修复登记为后续任务；不要擅自执行。实际启动命令可能迁移数据库、访问生产或调用付费服务，先核对环境和脚本作用，使用获准的隔离/只读方式。
+If this task is only to onboard project tracking, register environment recovery, dependency updates, and product fixes as follow-up tasks; do not perform them without authorization. Startup commands may migrate databases, access production, or invoke paid services. First check the environment and what the scripts do, and use an authorized isolated or read-only method.
 
-## 最小现状基线
+## Minimum current-state baseline
 
-按本次目标的影响范围记录，不要求一次补完所有模块：
+Record only the areas affected by this task; there is no requirement to cover every module at once:
 
-- **业务与能力**：主要角色、业务链路、模块入口，现存/仅文档/未知分别标注。
-- **技术与运行**：实际框架/运行时/依赖声明、启动构建方式、所需服务和配置名、环境可用性；不抄秘密值。支持期或漏洞等版本敏感结论须核实可靠现行来源，不能凭年龄下结论。
-- **边界与约束**：数据/状态权威、上下游消费者、兼容契约、重要定时任务/脚本、可修改与只读位置、人员/服务依赖。
-- **质量现状**：已有测试及其有效范围、代表性行为与视觉快照、用户已报问题、无法运行或无法重现的原因。没有测试是缺口，不等于已测且覆盖 0%；没有定义场景分母时覆盖率为未知。
-- **交付现状**：能否构建/部署、实际发布方式、可观测性和现有恢复能力。只记录事实，不能为接入治理自行改 CI/生产。
+- **Business and capabilities:** Main roles, business flows, module entry points, and which items are existing, documentation-only, or unknown.
+- **Technology and runtime:** Actual frameworks, runtimes, declared dependencies, startup/build methods, required services and configuration names, and environment availability; do not copy secret values. Verify version-sensitive claims such as support periods or vulnerabilities against a reliable current source; do not draw conclusions from age alone.
+- **Boundaries and constraints:** Data/state authority, upstream and downstream consumers, compatibility contracts, important scheduled jobs/scripts, writable and read-only areas, and people/service dependencies.
+- **Quality state:** Existing tests and their effective scope, representative behavior and visual snapshots, user-reported issues, and reasons the project cannot run or an issue cannot be reproduced. No tests is a gap; it does not mean testing was performed and coverage was 0%. If the scenario denominator is undefined, coverage is unknown.
+- **Delivery state:** Whether the project can build/deploy, its actual release method, observability, and existing recovery capabilities. Record facts only; do not change CI or production to onboard governance.
 
-版本身份优先使用实际提交/制品摘要；没有版本控制时使用清楚标注的只读快照或清单哈希。引入 Git、迁移目录或清理备份属于独立决策，不是建账的隐含步骤。
+Prefer an actual commit or artifact digest for version identity. If there is no version control, use a clearly labeled read-only snapshot or manifest hash. Introducing Git, migrating directories, or cleaning up backups is a separate decision, not an implied part of setting up records.
 
-## 区分三类工作
+## Distinguish three kinds of work
 
-1. **本次交付**：用户真正要求的行为变化或文档接管，定义范围与验收。
-2. **达到本次安全交付所必需的补足**：例如受影响模块的行为描述、可重复检查或隔离夹具；在任务内说明理由与影响。
-3. **历史债务/现代化**：未影响本次的重构、过时依赖、全量 UI 迁移、补历史文档等另列待评估。只有获准才排期；不能隐性夹带，也不能把现存缺陷记作本轮新引入。
+1. **This delivery:** The behavior change or documentation takeover the user actually requested, with its scope and acceptance conditions.
+2. **Work required for a safe delivery now:** For example, documenting affected-module behavior, adding a repeatable check, or creating an isolated fixture. Explain the reason and impact in the task.
+3. **Historical debt/modernization:** Refactors, outdated dependencies, full UI migrations, historical documentation, and other work that does not affect this task. List it separately for assessment. Schedule it only when authorized; do not slip it in, and do not record an existing defect as newly introduced by this round.
 
-发现与本次相关的严重安全/数据风险时暂停相应危险操作，继续不受影响的盘点，并按项目风险规则处理；不能以“历史遗留”略过本次必须守住的边界。
+If a serious security or data risk related to this task is found, pause the dangerous operation, continue the unaffected inventory, and follow the project's risk rules. Do not use “legacy” as a reason to skip boundaries that this task must uphold.
 
-## 每次变更的最小切片
+## Minimum slice for each change
 
-1. 选定一个可观察的目标、触达模块与上下游，标明非目标；读取相关历史缺陷和限制。
-2. 补一段足够执行的现状/目标差异与验收，不倒推完整历史 PRD。需求不明时先查证，实质行为取舍由有权限的人决定。
-3. **需要改行为时**，优先在改前保留可重复的基线检查。可用现有自动测试、受影响边界的 characterization test（刻画现有行为）、隔离服务或明确步骤的人工回归。已知错误单列，不能固化为永远正确的期望；预期修复行为另写断言。
-4. 以最小变更完成任务，兼容影响记录在合同中；不顺手更换框架或升级锁文件。
-5. 比较变更前后、受影响消费者及规定验收。没有真实环境时如实交付源码/本地层证据，缺失的必要验收不能改名为通过。
-6. 回填台账与现状基线；新增有效检查/经验成为下一次工作的入口。通过实际触达逐步扩大可维护范围。
+1. Choose one observable goal and identify the modules and upstream/downstream areas touched; state non-goals and read related historical defects and limits.
+2. Record enough of the current-versus-target difference and acceptance conditions to execute the work; do not reconstruct a complete historical PRD. If a requirement is unclear, investigate it first; a person with authority must decide any material behavior tradeoff.
+3. **When changing behavior,** preferably preserve a repeatable baseline check before making the change. Options include existing automated tests, a characterization test at the affected boundary, an isolated service, or explicit manual regression steps. Track known errors separately instead of cementing them as permanently correct expectations; add separate assertions for the intended fix.
+4. Make the smallest change and record compatibility impact in the contract; do not opportunistically replace frameworks or upgrade lockfiles.
+5. Compare before and after, affected consumers, and required acceptance. If no real environment is available, report source-level/local evidence accurately; missing required acceptance cannot be relabeled as a pass.
+6. Update the ledger and current-state baseline. Effective new checks or lessons become entry points for the next task. Expand the maintainable scope gradually through actual changes.
 
-项目级未知不会阻止所有文档接入；是否阻止具体实现/验收取决于它是否影响本次正确性。避免“先彻底搞懂全部旧系统才能动手”，也避免“测试跑不了所以可以免验收”。
+Project-level unknowns do not block all documentation onboarding. Whether they block a specific implementation or acceptance depends on whether they affect correctness for that work. Avoid both “understand the entire old system before doing anything” and “tests cannot run, so acceptance can be waived.”
 
-## 接管完成口径
+## Meaning of “takeover complete”
 
-“已接管流程”仅表示入口、当前任务/问题、证据边界和下一步可接续。它不等于历史债务清零、全部模块验收或已现代化。交付明确哪些模块有基线、哪些仍未知，谁负责下次动作，以及扩展到其他模块的触发条件。
+“Process taken over” means only that an entry point, current task/issues, evidence boundaries, and a resumable next step are in place. It does not mean historical debt is cleared, all modules have been accepted, or the project has been modernized. State which modules have a baseline and which remain unknown, who owns the next action, and what should trigger expansion to other modules.
