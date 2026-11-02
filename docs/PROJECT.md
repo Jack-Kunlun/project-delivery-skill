@@ -13,7 +13,7 @@ This file is this repository's task, decision, event, and evidence record. The m
 | ID | Work | Status | Scope and acceptance |
 | --- | --- | --- | --- |
 | PD-001 | Publish the standalone skill repository | Accepted | English skill instructions, references, UI metadata and primary README; Chinese README; MIT license; semantic/package/link/install checks; personal-account public repository and verified Git push. |
-| PD-002 | Persist delivery rules during initialization | Awaiting publication | Default project-local agent instructions, authoritative record pointers, resumable task handling, idempotent initialization, a fresh follow-up exercise, local installation sync and GitHub push. |
+| PD-002 | Persist delivery rules during initialization | Accepted | Default project-local agent instructions, authoritative record pointers, resumable task handling, idempotent initialization, a fresh follow-up exercise, local installation sync and GitHub push. |
 
 Owner/acceptance: current maintainer acting through the coding assistant. Internal verification is separate from user acceptance. No delivery date is inferred, and the number of packaging tasks is not a product-completion percentage.
 
@@ -75,4 +75,5 @@ None for the requested repository creation, English instruction package, bilingu
 - Primary verification: inspected both actual source/test/ledger outputs, confirmed their implementations match, checked original instruction preservation, one integration/two work items after repeat setup, concrete links and resumption records. Reused the executors' unchanged two-test results rather than rerunning them. Temporary exercises and detailed hashes stay local.
 - Discovery boundary: generated project instructions and the skill catalog/path were explicitly supplied or read in fresh isolated contexts. This verifies instruction-driven continuation, not desktop/CLI auto-discovery or a guarantee that every future turn loads the skill. No global instructions, background jobs, real product code, or CI were changed.
 - Event, 2026-11-02: PD-002 moved to Awaiting publication after the bounded initialization, repeat, continuation, recheck, primary review, and static validation. The review interventions and untested host boundary remain visible.
-- Remaining: synchronize the verified package and personal installation, commit/push, verify the remote identity, and close PD-002. PD-001 remains accepted as historical publication work.
+- Publication evidence, 2026-11-02: revision `c841b29fe877ca3127406ea5cb833e48d9dc5953` was pushed to `main`; the GitHub API returned the identical SHA and author `Jack-Kunlun`. All seven installed skill files matched the repository package; the worktree was clean. PD-002 is internally accepted with the disclosed exercise deviations and host-discovery boundary retained.
+- Remaining: none for this scoped default-initialization update. This closeout changes only the project record; it does not expand verification claims. PD-001 remains accepted as historical publication work.
