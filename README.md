@@ -93,9 +93,27 @@ track the investigation, prevention work, and acceptance evidence.
 
 Invoke it for project adoption and delivery management. A routine single-file coding request does not automatically require a full project audit or a new governance structure.
 
+## Initialization and later tasks
+
+Initialization includes persistent project integration by default. You do not need to add “write AGENTS,” “keep updating the ledger,” or “use this automatically later” to the request.
+
+The skill creates or updates the **effective project-local agent instructions** (`AGENTS.md`, accounting for applicable overrides), links the actual records, and establishes the start/update/accept/closeout rules. It preserves existing rules and identifiers. Repeating initialization updates the existing integration rather than duplicating blocks or ledgers; a README link alone is not sufficient.
+
+After initialization, a normal request can be enough:
+
+```text
+Fix the empty inventory summary while preserving the existing nonempty output.
+```
+
+The project instructions require substantive work to read the current task and relevant lessons, register or reuse a work item, record changes/issues, perform applicable checks, and leave results and a resumption point. The user does not need to repeat the skill name or bookkeeping instructions. If the skill is temporarily unavailable, the concrete project-local rules remain usable and the availability gap is reported.
+
+Initialization acceptance includes a fresh-context continuation check without a workflow reminder. The record must distinguish instruction/link checks, an isolated agent following those instructions, and actual host auto-discovery; one does not prove the others. A check that cannot run remains explicitly unverified.
+
+For a project adopted with an older version, the next use of the skill repairs missing integration within the authorized project scope. Installing or updating the skill alone does not silently modify existing projects. Normal implicit skill selection remains enabled; this workflow does not install a background service or intercept every package-init command.
+
 ## How it works
 
-1. Locate the actual project and read its applicable instructions and authoritative records.
+1. Locate the actual project and read its applicable instructions and authoritative records. During initialization, install and verify its persistent project instruction entry point.
 2. Associate substantive work with a task, including documentation and initial adoption.
 3. Define scope, ownership, dependencies, observable acceptance, and a bounded verification plan.
 4. Execute and hand off work using the project's own contracts and requirements.
@@ -129,7 +147,7 @@ docs/PROJECT.md                  This repository's maintenance record
 
 Before translation, the Chinese instruction package was exercised on two isolated sample projects: one with an established ledger and one legacy project without records or a runnable environment. First-pass omissions in documenting the adoption task and recurring-defect follow-up were corrected and rechecked. These were bounded exercises, not proof of effectiveness across every project. The English package received semantic and structural comparison plus installation checks; the sample exercises were not rerun in English.
 
-Publication checks cover package identity, skill metadata, local links, the documented manual installation, and protection of an existing installation. See [the project record](docs/PROJECT.md) for actual results and publication status.
+Publication checks cover package identity, skill metadata, local links, the documented manual installation, and protection of an existing installation. The initialization/continuation change has its own scoped behavioral evidence, recorded separately from the original exercises. See [the project record](docs/PROJECT.md) for actual results and publication status.
 
 Installing this skill does not create CI gates, continuous monitoring, or an immutable audit system. It does not automatically adopt other projects, resolve their defects, or authorize commits, deployments, production access, or external messages. Project instructions and the user's actual authorization remain authoritative.
 

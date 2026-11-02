@@ -1,6 +1,6 @@
 ---
 name: project-delivery
-description: "Establish or maintain project delivery workflows: project overview and progress, tasks and issues, ad hoc scope changes, PRDs/prototypes/UI/UX, module handoffs, test coverage, acceptance, releases, and recurring-defect improvement. Use for process adoption, a first work ledger, legacy-project takeover, inventorying delivered capabilities, or ongoing delivery tracking. Reuse authoritative records where they exist. A routine isolated coding request does not automatically require project-wide governance changes."
+description: "Initialize project delivery and keep it active through project-local agent instructions. Use when initializing or taking over a project, establishing a work ledger, managing delivery, or continuing substantive work in a project that adopted this workflow. Covers tasks/issues, scope changes, design, handoffs, acceptance, and recurring-defect improvement. Reuse existing records; a standalone package-scaffolding command or conceptual question does not by itself authorize full project onboarding."
 ---
 
 # Project Delivery
@@ -15,6 +15,17 @@ Make work resumable, issues traceable, and delivery verifiable. Records should s
 4. **Process questions or proposal review only:** Answer the question or offer recommendations. Without a request to write or an existing project convention, do not automatically adopt the entire project.
 
 First establish the actual project root, worktree, and current authorization. The current directory may be a prototype or backup. If candidate identity is uncertain, continue only safe inventory work; do not implement in the wrong project. Read applicable AGENTS and existing conventions, and preserve user changes. The project's own security, testing, design, and release requirements take precedence over these default templates.
+
+## Initialization defaults
+
+A request to initialize or adopt the project's workflow includes persistent integration; the user does not need to list those steps or ask for future automatic use. Read [Project adoption](references/adopt-project.md) and, within the authorized project scope:
+
+- Establish or reuse the authoritative records and register initialization itself.
+- Create or update the effective project-local `AGENTS.md` instruction entry point, accounting for applicable overrides. A README link alone does not complete this step.
+- Install concrete record pointers and the start/update/accept/closeout rules for later substantive tasks. Preserve existing rules and identifiers; update an existing integration instead of duplicating it.
+- Verify the integration and a fresh-context continuation without a workflow reminder. Record what actually ran; missing validation or an unwritable effective instruction file remains an explicit gap.
+
+For a project previously adopted by this skill, repair a missing or outdated persistence integration when the skill next runs within the authorized project scope, preserving current records. After adoption, ordinary substantive work follows the persisted project instructions without reinitializing the project or requiring the user to repeat `$project-delivery`. Use the current task and applicable references. This is task-driven instruction use, not a background service or a claim that a skill is loaded on every turn.
 
 ## Read references as needed
 

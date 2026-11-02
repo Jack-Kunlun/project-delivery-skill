@@ -29,11 +29,40 @@ Record the current recordkeeping task before continuing the inventory. If there 
 
 Split records further as they grow in practice. Optional files include `TASKS.md`, `CHANGES.md`, `ACTIVITY.md`, `ACCEPTANCE.md`, `MODULE-BOUNDARIES.md`, `LESSONS.md`, and `EVIDENCE.md`. Keep PRDs, design, tests, and delivered capabilities in the files the project already uses. Do not create empty shells. Fields may share a document, but their responsibilities and traceability must remain clear.
 
-## Resumption entry point and ownership
+## Persistent instructions are part of initialization
 
-Add a short entry point in an appropriate place in the project's existing README or AGENTS file, preserving its current rules. Onboarding should make clear what to read before work starts, who updates tasks, who accepts the work, where interruptions are recorded, how issues are logged, and how work is resumed at closeout. One person may hold multiple roles; use “unassigned” when no actual person is known. Organizational job titles or six AI agents are not prerequisites for using this process.
+When the user requests initialization, onboarding, or project takeover, do this integration by default within the authorized project scope. Do not ask them to restate “update AGENTS,” “record future tasks,” or “make it automatic.” A request for conceptual advice or only a package-scaffolding command does not authorize full onboarding.
 
-Version repository documentation with its branch. A new workspace should include the relevant documentation commit; hand off uncommitted content explicitly rather than claiming it is synchronized, and do not maintain mutable state through absolute paths into another workspace. If an external system is authoritative, preserve its permissions and project mapping.
+1. **Find the effective project instruction file.** Read existing project `AGENTS.md`, applicable `AGENTS.override.md`, and relevant nested instructions. Use the root `AGENTS.md` when it is effective; create it if missing. If an override replaces it, integrate in the effective project file rather than writing instructions the host would ignore. Preserve higher-priority and more specific rules; do not remove an override or change global user instructions. Check the intended working directory, not just the repository root.
+2. **Resolve the record map.** Find the actual project overview, authoritative task/issue source, decisions/events, acceptance rules, and lessons. Small projects may put them in sections of one document. Use working repository-relative links or the established external authority; do not invent files or create empty documents merely to satisfy a template.
+3. **Merge a compact persistence block.** Keep existing instructions outside the integration unchanged. Use one `project-delivery:begin` / `project-delivery:end` block, or extend an equivalent existing integration. On repeat initialization, update that block and reuse the ledger/IDs instead of appending another block or starting a new ledger. Reconcile user edits; do not blindly replace the whole file. A README can link to the entry point but does not replace the effective agent instructions.
+4. **Keep the lifecycle active.** The block requires later substantive tasks to read current records, register work before execution, track changes/issues and relevant lessons, apply appropriate acceptance checks, and leave results and a resumption point. It should tell the agent to use `project-delivery` when available. If the skill is unavailable, the concrete local rules still apply; report the availability gap without inventing a successful invocation or automatically blocking unrelated safe work.
+5. **Verify before claiming complete.** Follow the acceptance checks below and record actual results in the initialization task. If effective project instructions cannot be written within scope, complete authorized documentation work and record the remaining integration gap; do not mark persistent initialization complete. Existing authorization should not turn into repeated approval requests for routine steps.
+
+Use the following as a compact example, adapting all record paths and responsibilities to the project. Replace every placeholder before writing; the generated instructions must be usable without the initialization chat or the author's machine paths.
+
+```text
+<!-- project-delivery:begin -->
+## Project delivery workflow
+For substantive project work, apply project-delivery without waiting for a
+workflow reminder. Use the installed skill when available; otherwise follow
+these project-local rules and report the missing-skill limitation.
+- Entry point: {actual relative overview path}.
+- Authoritative records: {actual task/issue, decision/event, acceptance,
+  and lesson paths or sections; reuse established external authority}.
+- Before execution, read the current task, recent decisions, and relevant
+  lessons; associate or create the work item and define scope and acceptance.
+- During work, record material changes, issues, blockers, and resumption points.
+- Before handoff, run applicable checks; record actual evidence, unresolved
+  gaps, task status, and the next step. Keep acceptance and release separate.
+- Preserve existing project rules and record authority. Continue existing
+  work; do not reinitialize the project for every task or assume release rights.
+<!-- project-delivery:end -->
+```
+
+Name actual ownership/receiving responsibilities, or mark them unassigned when unknown. One person may fill multiple roles; a fixed team or agent roster is not required. Pure explanations without a new decision, issue, scope change, or commitment do not need a fabricated work item.
+
+Version repository documentation with its branch. A new worktree must contain the applicable instructions and records; hand off uncommitted content explicitly rather than claiming it is synchronized. Do not maintain mutable state through absolute paths into another worktree. For an external authority, preserve its permissions and project mapping.
 
 ## Progress reporting
 
@@ -49,4 +78,12 @@ Do not describe task counts, lines of code, passing test counts, or document cou
 
 ## Onboarding acceptance
 
-The entry point is findable; each record has one authoritative source; the current work and known issues have destinations; history, current state, and goals are separated; the overview agrees with the ledger; and at least one actionable next task and its acceptance conditions are recorded. Links, identifier/status consistency, and a check of actual differences can show that the documentation has been onboarded; they do not prove that product behavior or continuous improvement is effective. For a legacy project that cannot yet run, continue recording its limits according to [Gradual Takeover of Legacy Projects](legacy-project.md).
+Check these observable outcomes, not just the presence of filenames:
+
+- The effective project instructions contain one usable persistence integration; prior rules remain intact and the relevant override/directory scope has been checked.
+- Its concrete record pointers resolve. Each status has one authority, overview and ledger agree, history/current state/goals are distinct, and current work and known issues have owners or handling destinations.
+- Initialization itself has a traceable task and evidence. Repeated initialization reuses the integration and records without duplicating blocks, tasks, or status sources; a rerun may append a new event to the same work item.
+- A fresh context receives the project instructions and a normal bounded follow-up request, **without** a user prompt naming this skill or asking for task bookkeeping. Verify the actual resulting task/issue record, relevant checks, result, and resumption point. Use an authorized isolated copy for an exercise instead of inventing live product work. Do not pass the earlier conversation or expected answer to the fresh agent.
+- Separate what was validated: instruction content/links; a fresh agent consuming those instructions; and the actual host's automatic instruction/skill discovery. Manually supplying the generated instructions to an isolated agent can validate continuation behavior, but does not prove host auto-loading. If the environment cannot support the continuation check, mark it unverified and leave an actionable verification item rather than claiming it passed.
+
+Initialization should not require the user to add these steps to each prompt. Its completion report identifies the effective instruction file, authoritative entry point, actual continuation evidence, and remaining limits. Documentation/continuation acceptance does not prove all product behavior, ongoing monitoring, or permanent prevention. For a legacy project that cannot yet run, keep its limits according to [Gradual Takeover of Legacy Projects](legacy-project.md).

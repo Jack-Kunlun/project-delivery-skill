@@ -2,3 +2,6 @@ interface:
   display_name: "Project Delivery"
   short_description: "Track project work from requirements to release"
   default_prompt: "Use $project-delivery to establish this project's delivery workflow and inventory tasks, issues, and existing capabilities."
+
+policy:
+  allow_implicit_invocation: true
