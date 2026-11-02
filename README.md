@@ -127,7 +127,7 @@ docs/PROJECT.md                  This repository's maintenance record
 
 ## Validation and limits
 
-The original skill was exercised on two isolated sample projects: one with an established ledger and one legacy project without records or a runnable environment. First-pass omissions in documenting the adoption task and recurring-defect follow-up were corrected and rechecked. These were bounded exercises, not proof of effectiveness across every project.
+Before translation, the Chinese instruction package was exercised on two isolated sample projects: one with an established ledger and one legacy project without records or a runnable environment. First-pass omissions in documenting the adoption task and recurring-defect follow-up were corrected and rechecked. These were bounded exercises, not proof of effectiveness across every project. The English package received semantic and structural comparison plus installation checks; the sample exercises were not rerun in English.
 
 Publication checks cover package identity, skill metadata, local links, the documented manual installation, and protection of an existing installation. See [the project record](docs/PROJECT.md) for actual results and publication status.
 

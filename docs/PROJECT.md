@@ -12,7 +12,7 @@ This file is this repository's task, decision, event, and evidence record. The m
 
 | ID | Work | Status | Scope and acceptance |
 | --- | --- | --- | --- |
-| PD-001 | Publish the standalone skill repository | Awaiting English publication | English skill instructions, references, UI metadata and primary README; Chinese README; MIT license; semantic/package/link/install checks; personal-account public repository and verified Git push. |
+| PD-001 | Publish the standalone skill repository | Accepted | English skill instructions, references, UI metadata and primary README; Chinese README; MIT license; semantic/package/link/install checks; personal-account public repository and verified Git push. |
 
 Owner/acceptance: current maintainer acting through the coding assistant. Internal verification is separate from user acceptance. No delivery date is inferred, and the number of packaging tasks is not a product-completion percentage.
 
@@ -21,7 +21,7 @@ Owner/acceptance: current maintainer acting through the coding assistant. Intern
 - The owner requested a standalone project, English primary README, Chinese documentation, and publication through their personal GitHub account.
 - The owner explicitly selected public visibility and MIT licensing. Target: `Jack-Kunlun/project-delivery-skill`.
 - The initial scope retained Chinese instructions. The owner subsequently required English skill instructions, superseding that language decision. Translate the complete instruction package and display metadata while preserving behavior; keep the Chinese README.
-- This repository is the maintained distribution source. The maintainer's local installed copy will be synchronized to the same English package.
+- This repository is the maintained distribution source. The maintainer's local installed copy is synchronized to the same English package.
 
 ## Events
 
@@ -49,6 +49,12 @@ English package checks on 2026-11-02:
 
 The original Chinese skill was exercised in two isolated sample projects: an established ledger and a legacy/no-ledger project without a runnable environment. First-pass traceability and recurrence-follow-up omissions were corrected and rechecked. These remain historical exercises, not newly executed English-language behavioral tests. No automatic skill-picker UI or live product verification is claimed.
 
+## Publication acceptance
+
+- English revision `f059e871e6b021e51ed3452e7bf924bcdd2c73e2` was pushed and independently read back through the GitHub API. Remote SHA matched local HEAD, GitHub attributed the commit to `Jack-Kunlun`, and the repository reported public visibility, personal owner type `User`, default branch `main`, and MIT licensing.
+- The worktree was clean at that verification point. All seven personally installed skill files matched the repository package byte for byte.
+- 2026-11-02: PD-001 was internally accepted after those checks. This closeout changes only the maintenance record and clarifies evidence wording in the two READMEs; the verified skill package and installation commands remain unchanged. The final remote head is available in GitHub history rather than being embedded recursively in its own commit.
+
 ## Remaining work
 
-Write the verified English candidate to this repository and the maintainer's installed copy, commit and push it, then verify remote identity and close PD-001 with actual evidence. Installation alone does not automatically adopt other projects or create continuous monitoring.
+None for the requested repository creation, English instruction package, bilingual README, MIT licensing, and GitHub push. Future behavior changes should get their own scoped record and applicable checks. Installation alone does not automatically adopt other projects or create continuous monitoring.
