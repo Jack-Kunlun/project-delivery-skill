@@ -14,7 +14,7 @@ This file is this repository's task, decision, event, and evidence record. The m
 | --- | --- | --- | --- |
 | PD-001 | Publish the standalone skill repository | Accepted | English skill instructions, references, UI metadata and primary README; Chinese README; MIT license; semantic/package/link/install checks; personal-account public repository and verified Git push. |
 | PD-002 | Persist delivery rules during initialization | Accepted | Default project-local agent instructions, authoritative record pointers, resumable task handling, idempotent initialization, a fresh follow-up exercise, local installation sync and GitHub push. |
-| PD-003 | Provide a complete Chinese documentation path | Awaiting publication | Chinese skill guide and reference pages, localized project/license explanations, same-language navigation, unchanged English runtime package, link/translation checks, and GitHub push. |
+| PD-003 | Provide a complete Chinese documentation path | Accepted | Chinese skill guide and reference pages, localized project/license explanations, same-language navigation, unchanged English runtime package, link/translation checks, and GitHub push. |
 
 Owner/acceptance: current maintainer acting through the coding assistant. Internal verification is separate from user acceptance. No delivery date is inferred, and the number of packaging tasks is not a product-completion percentage.
 
@@ -92,4 +92,6 @@ None for the requested repository creation, English instruction package, bilingu
 - Check correction: the first inventory check matched the lowercase reader filename as SKILL.md on the case-insensitive filesystem. Renamed the reader guide to guide.md; the repeated check passed with exactly one SKILL.md. The guide remains outside the installable skill tree. No failed result was counted as a pass.
 - Verification boundary: these are reader-documentation, semantic, and navigation checks. No new product, UI, behavior, or host-discovery tests ran; runtime behavior is unchanged. Temporary validation artifacts remain local.
 - Event, 2026-11-02: PD-003 moved to Awaiting publication after the scoped review and direct checks.
-- Remaining: apply the reviewed files, verify the staged diff, and publish within the existing personal-repository authorization.
+- Publication evidence, 2026-11-02: revision `2fea9362040c71907e5c251db34c15f682d4f271` was pushed to `main`; the GitHub API returned the identical SHA and author `Jack-Kunlun`. The named 12-file staged diff passed whitespace checks, and installed repository files matched the reviewed hashes. The worktree was clean after publication.
+- Closure: PD-003 is internally accepted. This closeout synchronizes only the English authoritative record and its Chinese reading view; it does not change the verified guide, references, installation, or runtime package. Existing semantic/link/package evidence remains applicable.
+- Remaining: none for the requested same-language documentation navigation. No new runtime behavior or UI-acceptance requirements were added.
