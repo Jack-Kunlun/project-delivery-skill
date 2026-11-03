@@ -125,13 +125,19 @@ The skill reads only the references relevant to the task. It keeps **implemented
 
 For UI-affecting tasks, initialization persists a project-local rule to read the current design/acceptance records and compare actual rendered states before acceptance. Select cases from affected conditional regions and shared style consumers, including relevant adjacent blocks, widths, and wrapping. Record expected versus observed results with the candidate and evidence. Passing a build, unit tests, or a route tour does not substitute for a required visual check.
 
-A missing or failed required check keeps UI acceptance open. Repeated layout defects need a scoped regression check and a later effectiveness follow-up. This is an instruction-based acceptance gate, not an installed CI blocker or a guarantee of error-free UI. Existing projects receive the revised local rule on their next authorized skill use; updating the package alone does not rewrite their instructions. See [delivery gates](skills/project-delivery/references/delivery-gates.md) and [record templates](skills/project-delivery/references/record-templates.md).
+A missing or failed required check keeps UI acceptance open. Repeated layout defects need a scoped regression check and a later effectiveness follow-up. The bundled executable gate can block unsupported local completion when wired into the project. It is not remote branch protection or a guarantee of error-free UI. Existing projects receive the revised local rule on their next authorized skill use; updating the package alone does not rewrite their instructions. See [delivery gates](skills/project-delivery/references/delivery-gates.md) and [record templates](skills/project-delivery/references/record-templates.md).
+
+## Executable acceptance and reuse
+
+Initialization now installs a project-owned gate and wires it to actual checks and the existing ledger. Valid, intact evidence for unchanged inputs/design/tools/environment is reused. Only missing, stale or failing checks run; when evidence is absent, the full applicable task scope runs, not automatically every test in the repository. `complete` blocks the status transition until all required checks pass, and `audit` detects managed completed entries without valid historical completion proof. Existing task history remains intact.
+
+See [configuration, adapter contract and commands](skills/project-delivery/references/automated-acceptance.md). UI checks must return the required case results; exit zero alone is insufficient. Legacy evidence needs verifiable bindings, and manual visual review stays distinct from automated measurements. Local commands cannot prevent deliberate file forgery; protected CI or tracker rules require separate actual integration.
 
 ## Language and compatibility
 
 The main README is English; [README.zh-CN.md](README.zh-CN.md) provides the Chinese version. The skill instructions, references, and Codex display metadata are **written in English**. The [Chinese reader documentation](docs/zh-CN/guide.md) provides corresponding explanations and reference pages outside the installable skill folder. Its links stay within the Chinese documentation except explicitly labeled language switches; it does not register a second skill.
 
-The package contains Markdown instructions and optional Codex UI metadata. It has no application runtime, package-manager dependencies, background services, or bundled executable automation. Actual tool availability and skill discovery depend on the host agent.
+The package contains English Markdown instructions, Codex UI metadata, and a Python 3.9+ standard-library acceptance runner (macOS/Linux mutating commands). The runner executes reviewed project commands and guards a configured local ledger transition; it adds no package-manager dependency or background service. Actual tool availability and skill discovery depend on the host agent.
 
 ## Documentation
 
@@ -140,6 +146,7 @@ The package contains Markdown instructions and optional Codex UI metadata. It ha
 - [Legacy-project takeover](skills/project-delivery/references/legacy-project.md)
 - [Record templates](skills/project-delivery/references/record-templates.md)
 - [Delivery, UI/UX, and testing gates](skills/project-delivery/references/delivery-gates.md)
+- [Executable acceptance and evidence reuse](skills/project-delivery/references/automated-acceptance.md)
 - [Continuous improvement](skills/project-delivery/references/improvement.md)
 - [Project record](docs/PROJECT.md)
 
@@ -149,12 +156,14 @@ The package contains Markdown instructions and optional Codex UI metadata. It ha
 skills/project-delivery/
   SKILL.md                       Skill entry point and routing
   agents/openai.yaml             Codex display metadata
+  scripts/acceptance_gate.py      Executable evidence and completion gate
   references/
     adopt-project.md             Existing records and first-time adoption
     legacy-project.md            Gradual takeover of legacy systems
     record-templates.md          Tasks, issues, changes, handoffs, evidence
     delivery-gates.md            Lifecycle, UI/UX, tests, and acceptance
     improvement.md               Recurrence and improvement follow-up
+    automated-acceptance.md      Gate configuration and evidence reuse
 
 docs/PROJECT.md                  Authoritative maintenance record
 docs/zh-CN/                     Chinese reader documentation
@@ -170,7 +179,9 @@ Before translation, the Chinese instruction package was exercised on two isolate
 
 Publication checks cover package identity, skill metadata, local links, the documented manual installation, and protection of an existing installation. The initialization/continuation change has its own scoped behavioral evidence, recorded separately from the original exercises. See [the project record](docs/PROJECT.md) for actual results and publication status.
 
-Installing this skill does not create CI gates, continuous monitoring, or an immutable audit system. It does not automatically adopt other projects, resolve their defects, or authorize commits, deployments, production access, or external messages. Project instructions and the user's actual authorization remain authoritative.
+The executable gate has 18 targeted behavior tests and a scoped adopter exercise: 14 rendered layout cases, a deliberately failing spacing mutation, and unchanged-evidence reuse through installed project commands. The limits and review corrections are recorded with PD-005; these checks do not establish full-site UI coverage.
+
+Installing the skill alone does not wire project gates, create remote CI protection, continuous monitoring, or an immutable audit system. Project initialization must configure and verify the executable integration described above. It does not automatically adopt other projects, resolve their defects, or authorize commits, deployments, production access, or external messages. Project instructions and the user's actual authorization remain authoritative.
 
 ## Contributing
 

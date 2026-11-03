@@ -74,6 +74,8 @@ Report numerator/denominator, scope baseline, candidate/environment, failures/sk
 
 ## Verification budget and evidence reuse
 
+Use [Automated acceptance](automated-acceptance.md) to make this decision executable. Assess checks individually: reuse valid complete records; rerun only missing, failed, expired or affected checks. No trustworthy records means the full applicable task scope, not a mandatory repository-wide suite. A complete-looking document without matching candidate/environment and actual results is not valid evidence. Historical accepted work and current candidate readiness are different questions; preserve the former while verifying the latter.
+
 List direct behavior checks and project-required commands first, then run affected-module checks if needed. For low-impact documentation, a diff/reference check is usually enough; for shared modules, consider consumers; for high-risk work, verify according to project requirements and arrange an independent review. Do not override repository-mandated gates or omit failed checks.
 
 Reliable passing evidence may be reused when content, inputs, specifications, tools/configuration, and environment are the same. When a candidate changes, first check the affected scope; a relevant identity change or failure means the prior pass cannot be reused. Record why checks could not be run and the remaining risk; required acceptance that has not been verified remains unpassed. Record only commands, agents, models, and checks actually used; a plan is not execution.

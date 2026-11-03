@@ -68,6 +68,10 @@ Name actual ownership/receiving responsibilities, or mark them unassigned when u
 
 Version repository documentation with its branch. A new worktree must contain the applicable instructions and records; hand off uncommitted content explicitly rather than claiming it is synchronized. Do not maintain mutable state through absolute paths into another worktree. For an external authority, preserve its permissions and project mapping.
 
+## Executable acceptance during adoption
+
+Follow [Automated acceptance](automated-acceptance.md) to install a project-owned runner, map the current task and applicable commands, and wire guarded completion plus historical audit into existing entry points. Inspect existing records first: reuse complete valid evidence; execute only missing or invalidated checks. Keep scope mapping explicit, and do not replay production operations or rerun unrelated suites merely to create new-format receipts. Existing records can be validated through a provenance-preserving adapter when all required bindings are available. Record unwired paths or unsupported external transitions as gaps; do not claim automated enforcement until a failing completion is actually blocked.
+
 ## Progress reporting
 
 The overview should list product scope, milestones, target/date commitments, current acceptance evidence, blockers, next steps, and the update date. If no date is committed, say so; do not estimate duration from the number of tasks.

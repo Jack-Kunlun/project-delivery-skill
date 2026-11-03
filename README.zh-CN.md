@@ -123,13 +123,19 @@ Skill 会创建或更新**实际生效的项目级 Agent 指令**（通常是 `A
 
 初始化会将 UI 专项规则写入项目本地指令：涉及 UI 时，读取当前设计与验收记录，按真实渲染状态对比后再验收。从受影响的条件区域及共享样式使用方选择用例，覆盖相关相邻区块、宽度和换行；记录预期与实际、候选及证据。构建、单元测试或路由巡检通过，不能替代必需的视觉检查。
 
-必需检查缺失或失败时，UI 验收保持未通过。重复布局问题需要定向回归检查及后续效果复验。这是依靠执行指令落实的验收门槛，不是已安装的 CI 阻断器，也不保证 UI 永远无错。已接入项目在下次获授权使用 skill 时补齐本地规则；仅更新安装包不会重写项目指令。详见[交付门槛](docs/zh-CN/references/delivery-gates.md)和[记录模板](docs/zh-CN/references/record-templates.md)。
+必需检查缺失或失败时，UI 验收保持未通过。重复布局问题需要定向回归检查及后续效果复验。随包可执行门禁接入项目后可以阻断无依据的本地完成状态；它不等于远端分支保护，也不保证 UI 永远无错。已接入项目在下次获授权使用 skill 时补齐本地规则；仅更新安装包不会重写项目指令。详见[交付门槛](docs/zh-CN/references/delivery-gates.md)和[记录模板](docs/zh-CN/references/record-templates.md)。
+
+## 可执行验收与复用
+
+初始化现在会安装项目自有门禁，并接入真实检查和既有台账。输入、设计、工具、环境未变且完整有效的证据直接复用；只运行缺失、失效或失败的检查。没有证据时运行本任务完整适用范围，不自动跑全仓库测试。`complete` 在全部必需检查通过前阻止状态转换；`audit` 检出缺少有效历史完成证明的受管理已完成条目，并保留既有历史。
+
+详见[配置、适配合同及命令](docs/zh-CN/references/automated-acceptance.md)。UI 检查必须返回所需用例结果，仅退出码为 0 不够；历史证据必须能核验关联，人工视觉审阅与自动测量分开。本地命令不能防止恶意改写文件，受保护 CI 或工单规则仍需实际接入。
 
 ## 语言与兼容性
 
 主 README 使用英文，本文件提供中文说明。Skill 指令、参考资料和 Codex 显示元数据统一使用**英文**；[中文指令说明](docs/zh-CN/guide.md)及其配套参考资料提供对应的中文阅读版本，普通文档链接保持在中文文档内；需要切换语言时使用明确标注的英文原文入口。中文说明位于安装目录之外，不注册第二个 skill。
 
-安装包包含 Markdown 指令和可选的 Codex UI 元数据，没有应用运行时、包管理依赖、后台服务或可执行自动化。实际工具与发现机制取决于使用它的 Agent 环境。
+安装包包含英文 Markdown 指令、Codex UI 元数据和仅依赖 Python 3.9+ 标准库的验收执行器（写操作支持 macOS/Linux）；它运行已审阅项目命令并控制配置中的本地台账转换，不新增包管理依赖或后台服务。实际工具与发现机制取决于使用它的 Agent 环境。
 
 ## 文档导航
 
@@ -138,6 +144,7 @@ Skill 会创建或更新**实际生效的项目级 Agent 指令**（通常是 `A
 - [老旧项目接管](docs/zh-CN/references/legacy-project.md)
 - [记录模板](docs/zh-CN/references/record-templates.md)
 - [交付、UI/UX 与测试验收](docs/zh-CN/references/delivery-gates.md)
+- [自动验收与证据复用](docs/zh-CN/references/automated-acceptance.md)
 - [持续改进](docs/zh-CN/references/improvement.md)
 - [项目记录](docs/zh-CN/PROJECT.md)
 
@@ -147,12 +154,14 @@ Skill 会创建或更新**实际生效的项目级 Agent 指令**（通常是 `A
 skills/project-delivery/
   SKILL.md                       指令入口与资料导航
   agents/openai.yaml             Codex 显示元数据
+  scripts/acceptance_gate.py      可执行证据与完成门禁
   references/
     adopt-project.md             沿用已有记录与首次建账
     legacy-project.md            老旧项目渐进接管
     record-templates.md          任务、问题、变更、交接、证据
     delivery-gates.md            生命周期、UI/UX、测试与验收
     improvement.md               复发问题与改进效果复验
+    automated-acceptance.md      自动门禁配置与证据复用
 
 docs/PROJECT.md                  权威维护记录（英文）
 docs/zh-CN/                     中文阅读文档
@@ -168,7 +177,9 @@ docs/zh-CN/                     中文阅读文档
 
 发布检查覆盖文件一致性、skill 元数据、内部链接、文档中的手动安装步骤及已有安装保护。本次初始化/接续改动的专项行为证据与原演练分开记录。实际结果和发布状态见 [项目记录](docs/zh-CN/PROJECT.md)。
 
-安装 skill 不会自动创建 CI 门禁、持续监控或不可篡改审计系统，也不会自动接入其他项目、修复缺陷，或授权提交、部署、生产访问和对外发送消息。项目约定与用户的实际授权仍然有效。
+可执行门禁已通过 18 项定向行为测试及一次接入项目演练：14 个渲染布局用例、故意破坏间距的负例，以及通过实际项目命令复用未变证据。边界与审查修正记录于 PD-005，不代表全站 UI 已覆盖。
+
+仅安装 skill 不会自动接通项目门禁、远端 CI 保护、持续监控或不可篡改审计系统；项目初始化须按上述流程配置并验证可执行接入。它也不会自动接入其他项目、修复缺陷，或授权提交、部署、生产访问和对外发送消息。项目约定与用户的实际授权仍然有效。
 
 ## 参与改进
 

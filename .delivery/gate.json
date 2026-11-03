@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "evidence_dir": "artifacts/delivery-gate",
+  "checks": {
+    "gate-behavior": {
+      "kind": "command",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_acceptance_gate.py",
+        "-v"
+      ],
+      "inputs": [
+        "skills/project-delivery/scripts/acceptance_gate.py",
+        "tests/test_acceptance_gate.py"
+      ],
+      "timeout_seconds": 120,
+      "env_keys": [
+        "PATH",
+        "LANG",
+        "LC_ALL",
+        "TZ",
+        "NODE_ENV",
+        "NODE_OPTIONS",
+        "PYTHONOPTIMIZE",
+        "PYTHONPATH"
+      ]
+    },
+    "package-docs": {
+      "kind": "command",
+      "command": [
+        "python3",
+        "scripts/check_package.py"
+      ],
+      "inputs": [
+        "README.md",
+        "README.zh-CN.md",
+        "skills/project-delivery/SKILL.md",
+        "skills/project-delivery/agents/openai.yaml",
+        "skills/project-delivery/references/*.md",
+        "docs/zh-CN/guide.md",
+        "docs/zh-CN/LICENSE.md",
+        "docs/zh-CN/references/*.md",
+        "scripts/check_package.py",
+        "AGENTS.md",
+        ".delivery/gate.json"
+      ],
+      "timeout_seconds": 30,
+      "env_keys": [
+        "PATH",
+        "LANG",
+        "LC_ALL",
+        "TZ",
+        "NODE_ENV",
+        "NODE_OPTIONS",
+        "PYTHONOPTIMIZE",
+        "PYTHONPATH"
+      ]
+    }
+  },
+  "tasks": {
+    "PD-005": {
+      "checks": [
+        "gate-behavior",
+        "package-docs"
+      ],
+      "completion": {
+        "path": "docs/PROJECT.md",
+        "pending": "<!-- delivery:PD-005 --> In progress",
+        "done": "<!-- delivery:PD-005 --> Accepted"
+      }
+    }
+  }
+}
