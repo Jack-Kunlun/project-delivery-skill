@@ -86,6 +86,20 @@ Evidence location/related issue/uncovered areas/retest trigger:
 
 For files that change continuously, a path alone may not be enough to restore the candidate; add a commit, artifact digest, or file hash as appropriate for the project. Store evidence only in repository-approved locations or authorized systems. Keep temporary tests and large artifacts local when project rules require it, and explain their availability in the delivery notes. Do not commit secrets or every temporary artifact just to create a trail.
 
+### UI comparison record (for selected affected cases)
+
+```text
+Related task/issue; candidate/environment; route/component:
+State/data setup and coexisting conditional regions; viewport/theme/language:
+Design revision or local baseline; affected relationship or shared consumer:
+Expected appearance/geometry; observed rendering/measurements:
+Direct visual review and evidence (path or dated observation); actual tool:
+Result: pass / fail / unverified; defect/disposition or exclusion reason:
+Regression entry point; remaining checks and resumption action:
+```
+
+Use the [rendered UI acceptance gate](delivery-gates.md) to choose meaningful cases. Keep unknowns and exclusions visible; an empty record or a source-only check is not visual acceptance.
+
 ## Events, existing outcomes, and improvements
 
 - **Event:** Date and event type, related ID, actual operator, previous state → new state, reason, artifact/evidence. Record key starts, blockers, interruptions, acceptance, cancellation/merger, and closeout; do not copy every tool log. For backfills, distinguish the record date from when the event actually occurred.

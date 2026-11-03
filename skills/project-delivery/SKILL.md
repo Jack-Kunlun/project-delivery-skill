@@ -60,6 +60,7 @@ Preserve the project's state model. If none exists, a useful default is: Needs c
 
 ## Reusable quality constraints
 
+- For UI-affecting work, read the rendered acceptance gate in [Delivery gates](references/delivery-gates.md) before implementation and closeout. Identify affected conditional states and adjacent regions, then record design expectations against actual rendered results. Missing or failed required visual evidence keeps UI acceptance open even when build, unit tests, or route checks pass.
 - Prototype and UI delivery should reuse the project's visual language and components and inspect actual rendering. Check alignment, spacing, long text, and applicable states using [Delivery gates](references/delivery-gates.md). Producing screenshots or asserting source text alone does not prove visual correctness.
 - Use an agreed scenario set as the coverage denominator. Distinguish designed, executed, passed, and code coverage; identify mocks, skips, missing configuration, and checks that were not run.
 - On recurrence signals such as “again,” “recurring,” or “already fixed,” read [Continuous improvement](references/improvement.md). Issue records need an investigation/fix path and a follow-up path for prevention, similar consumers, and effectiveness checks. Before reproduction, these may be requirements for later investigation; never invent an implemented safeguard. A recorded lesson is not proof that recurrence has been prevented.

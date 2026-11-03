@@ -121,6 +121,12 @@ For a project adopted with an older version, the next use of the skill repairs m
 
 The skill reads only the references relevant to the task. It keeps **implemented**, **accepted**, **released**, and **verified in production** separate. Test coverage uses a defined scenario denominator; source inspection, mocks, browser checks, visual review, and live integration are different kinds of evidence.
 
+## UI acceptance in adopting projects
+
+For UI-affecting tasks, initialization persists a project-local rule to read the current design/acceptance records and compare actual rendered states before acceptance. Select cases from affected conditional regions and shared style consumers, including relevant adjacent blocks, widths, and wrapping. Record expected versus observed results with the candidate and evidence. Passing a build, unit tests, or a route tour does not substitute for a required visual check.
+
+A missing or failed required check keeps UI acceptance open. Repeated layout defects need a scoped regression check and a later effectiveness follow-up. This is an instruction-based acceptance gate, not an installed CI blocker or a guarantee of error-free UI. Existing projects receive the revised local rule on their next authorized skill use; updating the package alone does not rewrite their instructions. See [delivery gates](skills/project-delivery/references/delivery-gates.md) and [record templates](skills/project-delivery/references/record-templates.md).
+
 ## Language and compatibility
 
 The main README is English; [README.zh-CN.md](README.zh-CN.md) provides the Chinese version. The skill instructions, references, and Codex display metadata are **written in English**. The [Chinese reader documentation](docs/zh-CN/guide.md) provides corresponding explanations and reference pages outside the installable skill folder. Its links stay within the Chinese documentation except explicitly labeled language switches; it does not register a second skill.
